@@ -110,18 +110,186 @@
       .prompt-search-box button{width:100%}
     }
 
+
+    /* ===== Mobile / Tablet compact TOC drawer ===== */
+    .mobile-menu-toggle,.mobile-toc-overlay,.mobile-toc-drawer{display:none}
+    @media(max-width:1050px){
+      .shell{display:block;padding:0 0 90px}
+      .sidebar{display:none}
+      .mobile-bar{
+        display:flex;position:sticky;top:0;z-index:60;align-items:center;justify-content:flex-start;
+        width:100%;padding:10px max(14px,env(safe-area-inset-right)) 10px max(14px,env(safe-area-inset-left));
+        background:rgba(255,255,255,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)
+      }
+      .mobile-menu-toggle{
+        display:grid;place-items:center;width:48px;height:48px;border:0;border-radius:15px;
+        background:var(--forest);color:#fff;font-size:25px;line-height:1;font-weight:900;cursor:pointer;
+        box-shadow:0 8px 20px rgba(23,107,82,.2)
+      }
+      .mobile-menu-toggle:focus-visible,.mobile-menu-close:focus-visible{outline:4px solid rgba(49,183,201,.35);outline-offset:3px}
+      .mobile-toc-overlay{
+        display:block;position:fixed;inset:0;z-index:79;background:rgba(12,40,33,.38);
+        opacity:0;visibility:hidden;transition:opacity .22s ease,visibility .22s ease
+      }
+      .mobile-toc-drawer{
+        display:flex;flex-direction:column;position:fixed;left:0;top:0;bottom:0;z-index:80;
+        width:min(86vw,340px);padding:max(18px,env(safe-area-inset-top)) 16px 22px;
+        background:#fff;box-shadow:18px 0 44px rgba(17,58,47,.2);
+        transform:translateX(-104%);transition:transform .24s ease;overflow-y:auto;overscroll-behavior:contain
+      }
+      body.mobile-toc-open{overflow:hidden}
+      body.mobile-toc-open .mobile-toc-overlay{opacity:1;visibility:visible}
+      body.mobile-toc-open .mobile-toc-drawer{transform:translateX(0)}
+      .mobile-toc-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:4px 4px 14px;border-bottom:1px solid var(--line)}
+      .mobile-toc-head strong{font-size:20px;color:var(--forest-dark)}
+      .mobile-menu-close{display:grid;place-items:center;width:42px;height:42px;border:0;border-radius:13px;background:#edf8f3;color:var(--forest-dark);font-size:29px;line-height:1;cursor:pointer}
+      .mobile-toc-list{display:grid;gap:6px;padding:14px 0}
+      .mobile-toc-list a{display:flex;align-items:center;gap:11px;padding:12px;border-radius:13px;color:var(--ink);text-decoration:none;font-weight:800;line-height:1.35}
+      .mobile-toc-list a:hover,.mobile-toc-list a:focus-visible{background:var(--mint);color:var(--forest-dark)}
+      .mobile-toc-list b{flex:0 0 31px;height:31px;display:grid;place-items:center;border-radius:10px;background:#f2f8f5;color:var(--forest);font-size:13px}
+      .hero{border-radius:0}
+      .notice,.chapter,footer,.prompt-search-wrap{margin-left:14px;margin-right:14px}
+    }
+    @media(max-width:780px){
+      .mobile-bar{overflow:visible;scrollbar-width:auto}
+      .mobile-bar::-webkit-scrollbar{display:initial}
+      .mobile-bar a{display:none}
+    }
+
+
+
+    /* ===== Premium button polish ===== */
+    :root{
+      --btn-green-1:#0f7a5d;
+      --btn-green-2:#07533f;
+      --btn-cyan:#2fc0cf;
+      --btn-gold:#f0be54;
+      --btn-shadow:0 10px 24px rgba(12,74,58,.22),0 2px 6px rgba(12,74,58,.12);
+      --btn-shadow-hover:0 15px 32px rgba(12,74,58,.28),0 4px 10px rgba(12,74,58,.14);
+    }
+    button,.copy,.padlet,.source,.mobile-menu-toggle,.mobile-menu-close{
+      -webkit-tap-highlight-color:transparent;
+      transition:transform .18s ease,box-shadow .18s ease,filter .18s ease,border-color .18s ease,background .18s ease;
+    }
+    .copy{
+      position:relative;overflow:hidden;
+      border:1px solid rgba(255,255,255,.22);
+      border-radius:14px;
+      padding:12px 18px;
+      background:linear-gradient(135deg,var(--btn-green-1),var(--btn-green-2));
+      color:#fff;
+      font-weight:900;
+      letter-spacing:-.01em;
+      box-shadow:var(--btn-shadow);
+      text-shadow:0 1px 1px rgba(0,0,0,.12);
+    }
+    .copy::before{
+      content:"";position:absolute;inset:1px 1px auto 1px;height:48%;border-radius:12px 12px 9px 9px;
+      background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,0));pointer-events:none;
+    }
+    .copy:hover{background:linear-gradient(135deg,#168c6c,#084938);transform:translateY(-2px);box-shadow:var(--btn-shadow-hover);filter:saturate(1.06)}
+    .copy:active{transform:translateY(0) scale(.975);box-shadow:0 6px 15px rgba(12,74,58,.22)}
+    .copy.done{background:linear-gradient(135deg,#1495ad,#0b6f86);box-shadow:0 10px 24px rgba(19,124,154,.24)}
+    .basic .copy{border-radius:11px;padding:8px 13px;box-shadow:0 6px 14px rgba(12,74,58,.17)}
+
+    .prompt-search-box button{
+      position:relative;overflow:hidden;
+      border:1px solid rgba(255,255,255,.2);
+      border-radius:15px;
+      background:linear-gradient(135deg,#176b52,#0b4d3c);
+      box-shadow:0 9px 20px rgba(23,107,82,.2);
+      text-shadow:0 1px 1px rgba(0,0,0,.12);
+    }
+    .prompt-search-box button:hover{background:linear-gradient(135deg,#1a8061,#083f31);transform:translateY(-2px);box-shadow:0 13px 26px rgba(23,107,82,.25)}
+    .prompt-search-box button:active{transform:translateY(0) scale(.98)}
+
+    .mobile-menu-toggle{
+      position:relative;overflow:hidden;
+      background:linear-gradient(145deg,#16805f,#0a4b3a)!important;
+      border:1px solid rgba(255,255,255,.2)!important;
+      box-shadow:0 10px 24px rgba(12,74,58,.28),inset 0 1px 0 rgba(255,255,255,.18)!important;
+    }
+    .mobile-menu-toggle:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(12,74,58,.32),inset 0 1px 0 rgba(255,255,255,.22)!important}
+    .mobile-menu-toggle:active{transform:scale(.96)}
+    .mobile-menu-close{
+      background:linear-gradient(145deg,#f4f8f6,#e7f1ed)!important;
+      border:1px solid #d7e7e0!important;
+      color:var(--forest-dark)!important;
+      box-shadow:0 6px 15px rgba(12,74,58,.1)!important;
+    }
+    .mobile-menu-close:hover{transform:rotate(3deg) translateY(-1px);box-shadow:0 9px 20px rgba(12,74,58,.14)!important}
+
+    .top{
+      border:1px solid rgba(255,255,255,.18);
+      background:linear-gradient(145deg,#145f4b,#073c30);
+      box-shadow:0 14px 34px rgba(7,60,48,.34),inset 0 1px 0 rgba(255,255,255,.18);
+      text-shadow:0 1px 1px rgba(0,0,0,.16);
+    }
+    .top.show:hover{transform:translateY(-4px);box-shadow:0 19px 40px rgba(7,60,48,.38),inset 0 1px 0 rgba(255,255,255,.2)}
+    .top.show:active{transform:translateY(-1px) scale(.96)}
+
+    .padlet{
+      position:relative;overflow:hidden;
+      border:1px solid #ddd8ff;
+      background:linear-gradient(135deg,#ffffff 0%,#f6f3ff 58%,#eefaf7 100%);
+      box-shadow:0 10px 24px rgba(76,64,170,.12),inset 0 1px 0 rgba(255,255,255,.9);
+    }
+    .padlet::after{content:"↗";margin-left:auto;color:#6b61ad;font-size:16px;opacity:.72}
+    .padlet:hover{transform:translateY(-3px);border-color:#c9c1ff;box-shadow:0 15px 32px rgba(76,64,170,.16)}
+    .padlet:active{transform:translateY(-1px) scale(.99)}
+
+    .source{
+      position:relative;
+      border:1px solid #d4e6de;
+      background:linear-gradient(145deg,#fff,#f6fbf8);
+      box-shadow:0 7px 18px rgba(23,107,82,.07);
+    }
+    .source:hover{transform:translateY(-3px);border-color:#86d4dc;box-shadow:0 13px 26px rgba(49,183,201,.14);background:linear-gradient(145deg,#fff,#effbf9)}
+    .source:active{transform:translateY(-1px)}
+
+    .toc a,.mobile-toc-drawer a{
+      transition:transform .16s ease,background .16s ease,color .16s ease,box-shadow .16s ease;
+    }
+    .toc a:hover,.mobile-toc-drawer a:hover{transform:translateX(3px);box-shadow:0 5px 12px rgba(23,107,82,.07)}
+
+    @media(max-width:780px){
+      .copy{min-height:46px;padding:11px 14px}
+      .top{box-shadow:0 10px 26px rgba(7,60,48,.3),inset 0 1px 0 rgba(255,255,255,.18)}
+      .prompt-search-box button{min-height:50px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      button,.copy,.padlet,.source,.mobile-menu-toggle,.mobile-menu-close,.toc a,.mobile-toc-drawer a{transition:none!important}
+      .copy:hover,.padlet:hover,.source:hover,.mobile-menu-toggle:hover,.top.show:hover{transform:none!important}
+    }
+
 </style>
 </head>
 <body>
   <a class="skip" href="#main">본문 바로가기</a>
-  <nav class="mobile-bar" aria-label="모바일 목차">
-    <a href="#top">처음</a><a href="https://padlet.com/yu_ssam/namseong" target="_blank" rel="noopener">Padlet ↗</a><a href="#chapter-0">좋은 프롬프트</a><a href="#chapter-1">문서</a><a href="#chapter-2">이미지</a><a href="#chapter-3">영상</a><a href="#chapter-4">노래</a><a href="#chapter-5">동화 PPT</a><a href="#chapter-6">검토</a>
-  </nav>
+  <div class="mobile-bar" aria-label="모바일 목차 열기">
+    <button class="mobile-menu-toggle" type="button" aria-label="간단 목차 열기" aria-controls="mobileTocDrawer" aria-expanded="false">☰</button>
+  </div>
+  <div class="mobile-toc-overlay" aria-hidden="true"></div>
+  <aside class="mobile-toc-drawer" id="mobileTocDrawer" aria-label="모바일 간단 목차" aria-hidden="true">
+    <div class="mobile-toc-head"><strong>간단 목차</strong><button class="mobile-menu-close" type="button" aria-label="간단 목차 닫기">×</button></div>
+    <nav class="mobile-toc-list">
+      <a href="#top"><b>⌂</b>처음</a>
+      <a href="#chapter-0"><b>0</b>좋은 프롬프트</a>
+      <a href="#chapter-1"><b>1</b>문서 만들기</a>
+      <a href="#chapter-2"><b>2</b>이미지 만들기</a>
+      <a href="#chapter-3"><b>3</b>영상 만들기</a>
+      <a href="#chapter-4"><b>4</b>노래 만들기</a>
+      <a href="#chapter-5"><b>5</b>동화구연 PPT</a>
+      <a href="#chapter-6"><b>6</b>검토 체크리스트</a>
+      <a href="#chapter-7"><b>7</b>유치원 실무핵심프롬프트</a>
+      <a href="https://padlet.com/yu_ssam/namseong" target="_blank" rel="noopener"><b>↗</b>Padlet</a>
+    </nav>
+  </aside>
   <div class="shell" id="top">
     <aside class="sidebar" aria-label="고정 목차">
       <div class="brand"><div class="brand-mark">AI</div><div><strong>남성유치원<br>프롬프트 가이드</strong><span>2026. 09. 08.</span></div></div>
       <div class="toc-title">간단 목차</div>
-      <nav class="toc"><a href="#chapter-0"><b>0</b>좋은 프롬프트</a><a href="#chapter-1"><b>1</b>문서 만들기</a><a href="#chapter-2"><b>2</b>이미지 만들기</a><a href="#chapter-3"><b>3</b>영상 만들기</a><a href="#chapter-4"><b>4</b>노래 만들기</a><a href="#chapter-5"><b>5</b>동화구연 PPT</a><a href="#chapter-6"><b>6</b>검토 체크리스트</a></nav>
+      <nav class="toc"><a href="#chapter-0"><b>0</b>좋은 프롬프트</a><a href="#chapter-1"><b>1</b>문서 만들기</a><a href="#chapter-2"><b>2</b>이미지 만들기</a><a href="#chapter-3"><b>3</b>영상 만들기</a><a href="#chapter-4"><b>4</b>노래 만들기</a><a href="#chapter-5"><b>5</b>동화구연 PPT</a><a href="#chapter-6"><b>6</b>검토 체크리스트</a><a href="#chapter-7"><b>7</b>유치원 실무핵심프롬프트</a></nav>
       <a class="padlet" href="https://padlet.com/yu_ssam/namseong" target="_blank" rel="noopener">
         <span class="padlet-logo" style="background:#fff;overflow:hidden">
           <img src="https://padlet.com/favicon.ico" alt="Padlet 공식 로고" width="34" height="34" style="display:block;width:34px;height:34px;object-fit:contain" onerror="this.style.display='none'">
@@ -193,7 +361,7 @@
           <button id="promptSearchClear" type="button">검색 초기화</button>
         </div>
         <div class="prompt-search-meta" aria-hidden="true">
-          <span>문서</span><span>이미지</span><span>영상</span><span>노래</span><span>동화 PPT</span><span>검토</span>
+          <span>문서</span><span>이미지</span><span>영상</span><span>노래</span><span>동화 PPT</span><span>검토</span><span>실무핵심</span>
         </div>
         <div id="promptSearchStatus" class="prompt-search-status" aria-live="polite">전체 프롬프트를 보고 있습니다.</div>
       </section>
@@ -201,6 +369,643 @@
       <div class="notice"><div class="notice-icon">✓</div><div><strong>AI 결과물은 교사가 최종 확인합니다.</strong><p>유아 개인정보는 입력하지 않고, 날짜·요일·안전·보건·누리과정 내용은 공식 자료와 기관 지침으로 다시 확인해 주세요.</p></div></div>
       <div id="prompt-root"></div>
       <section class="chapter" id="chapter-6"><div class="chapter-head"><div class="chapter-no">6</div><div><h2>수업 마무리용 검토 체크리스트</h2><p class="chapter-intro">교육 현장에 내보내기 전, 결과물마다 확인하세요.</p></div></div><div class="checks" id="checks"></div><h3>공식 자료 확인 경로</h3><div class="sources"><a class="source" href="https://www.nccw.educare.or.kr/web/nced/proc/revi/contPageDetail.do?cont_no=A7EEB3D1EDE911EB8EA7D20DE2351542" target="_blank" rel="noopener">교육부 · 2019 개정 누리과정 ↗</a><a class="source" href="https://i-nuri.go.kr/teacher/module/dataSearch/index.do?data_type=normal&manage_idx=25&menu_idx=19" target="_blank" rel="noopener">i-누리 · 놀이실행자료 ↗</a><a class="source" href="https://www.kdca.go.kr" target="_blank" rel="noopener">질병관리청 ↗</a><a class="source" href="https://www.nfa.go.kr" target="_blank" rel="noopener">소방청 ↗</a></div></section>
+
+      <section class="chapter" id="chapter-7">
+        <div class="chapter-head"><div class="chapter-no">7</div><div><h2>유치원 실무핵심프롬프트</h2><p class="chapter-intro">놀이·관찰·학부모 소통·안전·행정·행사·교사 성찰 등 유치원 현장에서 바로 복사해 활용할 수 있는 실무 프롬프트 모음입니다.</p></div></div>
+        <article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 1. 놀이·수업 설계</span><h3>1. 유아의 관심에서 놀이 확장 아이디어 만들기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-1">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-1">너는 대한민국 유치원의 놀이중심 교육과정을 이해하는 유아교육 전문가야. 아래 관찰 내용을 바탕으로 유아의 현재 관심과 놀이 흐름을 해치지 않는 확장 아이디어를 제안해줘.
+
+[연령] 만 __세
+[놀이 주제/상황] __
+[유아들이 실제로 한 말·행동(개인 식별 정보 제외)] __
+[현재 제공된 자료] __
+[교실/바깥놀이 환경] __
+
+다음 순서로 작성해줘.
+1) 유아가 현재 탐색하고 있는 핵심 관심 3가지
+2) 교사가 기다려 볼 장면
+3) 교사가 던질 수 있는 열린 질문 8개
+4) 추가로 제시할 수 있는 놀잇감·재료 8개
+5) 실내 놀이 확장 아이디어 5개
+6) 바깥놀이 확장 아이디어 3개
+7) 누리과정 5개 영역과 자연스럽게 연결되는 지점
+8) 교사가 개입을 줄여야 할 상황과 이유
+9) 관찰할 포인트 5개
+10) 안전상 유의점
+교사 주도 활동계획처럼 작성하지 말고, 유아의 선택과 놀이 흐름을 존중하는 방식으로 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>유아가 자발적으로 시작한 놀이를 교사가 과도하게 주도하지 않으면서 확장할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 1. 놀이·수업 설계</span><h3>2. 놀이주제별 열린 질문 만들기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-2">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-2">너는 유아의 사고를 촉진하는 질문을 설계하는 유치원 교사야. [놀이주제: __]에 대해 만 __세 유아에게 사용할 수 있는 열린 질문을 만들어줘. 정답을 요구하거나 유도하지 말고, 관찰·예측·비교·상상·문제해결·감정·협력 질문으로 나누어 각 5개씩 총 35개를 제시해줘. 질문은 교실에서 실제로 말할 수 있을 정도로 짧고 자연스러운 한국어로 작성하고, 어려운 추상어는 피해서 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>유아의 생각을 끌어내는 발문이 필요할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 1. 놀이·수업 설계</span><h3>3. 하루 놀이 흐름 지원안</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-3">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-3">대한민국 유치원 만 __세 학급의 하루 운영을 지원하는 교사 관점으로 작성해줘. 오늘 예상되는 유아의 관심은 [__]이고, 최근 이어지고 있는 놀이는 [__]야. 등원부터 귀가까지 시간표를 촘촘하게 고정하지 말고, 충분한 놀이시간이 확보되도록 &#x27;교사가 준비할 환경·기다릴 장면·관찰할 포인트·필요 시 지원할 방법&#x27; 중심으로 하루 운영 메모를 만들어줘. 간식, 급식, 화장실, 휴식, 바깥놀이, 안전 요소도 포함해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>하루 일과에서 놀이 흐름을 미리 점검할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 1. 놀이·수업 설계</span><h3>4. 대집단 활동을 짧고 유아중심으로 재구성</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-4">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-4">아래 대집단 활동안을 만 __세 유아에게 적합하게 10~15분 이내로 재구성해줘. 교사가 설명하는 시간을 최소화하고 유아가 말하고 선택하고 움직이는 비중을 높여줘.
+[기존 활동 내용] __
+
+결과는 ① 시작 질문 ② 유아 참여 방식 ③ 핵심 경험 ④ 선택 가능한 방법 ⑤ 짧은 마무리 ⑥ 이후 자유놀이로 이어지는 연결 아이디어로 정리해줘. 불필요한 학습지나 획일적 결과물은 제안하지 마.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>길어진 이야기나누기·대집단 활동을 줄이고 싶을 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 1. 놀이·수업 설계</span><h3>5. 바깥놀이 아이디어</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-5">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-5">만 __세 유아 __명이 [계절: __]에 유치원 [공간: 운동장/놀이터/숲길/산책로]에서 할 수 있는 바깥놀이 아이디어를 12개 제안해줘. 준비물이 거의 필요 없는 놀이, 자연물을 활용하는 놀이, 신체활동 놀이를 균형 있게 포함해줘. 각 아이디어마다 유아가 스스로 변형할 수 있는 여지, 교사의 최소 개입, 안전 유의점을 1줄씩 적어줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>운동장·놀이터·산책에서 놀이를 확장할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 1. 놀이·수업 설계</span><h3>6. 비 오는 날 실내 대체 놀이</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-6">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-6">비·미세먼지 등으로 바깥놀이가 어려운 날, 만 __세 유아의 신체활동 욕구를 충족하면서도 교실 안전을 지킬 수 있는 실내 대체 놀이 10개를 제안해줘. 교실 크기는 [__], 유아 수는 [__]명, 사용 가능한 도구는 [__]야. 소음이 큰 놀이와 조용한 놀이를 번갈아 운영할 수 있도록 구성하고, 공간 배치와 안전수칙을 함께 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>바깥놀이가 취소되었을 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 1. 놀이·수업 설계</span><h3>7. 혼합연령 놀이 지원</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-7">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-7">만 __세와 만 __세 유아가 함께 [놀이: __]를 하고 있어. 나이가 많은 유아가 일방적으로 주도하거나 어린 유아가 소외되지 않도록 교사가 지원할 수 있는 방법을 제안해줘. ① 환경 지원 ② 교사의 말 ③ 또래 도움을 강요하지 않는 방법 ④ 갈등 상황 지원 ⑤ 각 연령에서 관찰할 발달 포인트로 정리해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>연령이 다른 유아가 함께 놀이할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 2. 관찰·기록·평가</span><h3>8. 관찰기록을 객관적 문장으로 다듬기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-8">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-8">아래 메모를 유치원 교사의 객관적 관찰기록으로 바꿔줘. 추측·평가·낙인 표현은 제거하고, 실제로 보이거나 들린 행동과 말을 중심으로 써줘. 유아 실명은 사용하지 말고 &#x27;유아 A&#x27;로 표현해줘.
+[원메모] __
+
+출력: ① 관찰 상황 ② 객관적 관찰기록 ③ 이 장면에서 읽을 수 있는 관심/경험(가능성으로 표현) ④ 다음에 더 관찰할 점 ⑤ 지원 아이디어. &#x27;문제가 있다&#x27;, &#x27;산만하다&#x27;, &#x27;고집이 세다&#x27;처럼 단정하는 표현은 사용하지 마.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>주관적 표현을 줄여 관찰기록을 작성할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 2. 관찰·기록·평가</span><h3>9. 놀이 관찰에서 누리과정 연결 찾기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-9">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-9">아래 놀이 관찰기록을 2019 개정 누리과정의 5개 영역(신체운동·건강, 의사소통, 사회관계, 예술경험, 자연탐구) 관점에서 분석해줘. 억지로 모든 영역에 연결하지 말고 실제 행동에서 근거가 보이는 영역만 선택해. 각 연결마다 &#x27;관찰 근거 → 관련 경험 → 교사의 다음 지원&#x27; 순으로 작성해줘.
+[관찰기록] __</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>놀이 기록을 교육과정과 연결해 해석할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 2. 관찰·기록·평가</span><h3>10. 주간 놀이기록 요약</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-10">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-10">아래는 한 주 동안 기록한 익명화된 놀이 메모야. 같은 의미의 내용을 묶고, 유아들의 공통 관심과 놀이 변화가 보이도록 주간 놀이기록으로 정리해줘.
+[월~금 메모] __
+
+① 이번 주 주요 놀이 흐름 ② 유아가 새롭게 시도한 것 ③ 또래와의 상호작용 ④ 교사의 지원과 그 이후 변화 ⑤ 다음 주에 이어질 가능성이 있는 놀이 ⑥ 환경 구성 제안으로 정리해줘. 개별 유아에 대한 성격 판단은 하지 마.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>한 주의 여러 메모를 정리할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 2. 관찰·기록·평가</span><h3>11. 유아 포트폴리오 설명문</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-11">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-11">유아 포트폴리오에 넣을 짧은 설명문을 만들어줘. 개인정보가 드러나지 않게 이름은 쓰지 말고, 결과물의 수준을 평가하지 말고 과정과 시도를 중심으로 기록해줘.
+[활동/놀이 상황] __
+[유아가 한 말] __
+[유아가 한 행동] __
+
+80~120자 버전과 180~250자 버전 두 가지로 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>사진·작품 옆에 들어갈 짧은 기록을 쓸 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 2. 관찰·기록·평가</span><h3>12. 학기말 성장 서술 초안</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-12">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-12">아래는 한 유아의 학기 중 익명화된 관찰자료야. 이를 바탕으로 학기말 성장 서술 초안을 작성해줘. 단정적 진단, 다른 유아와의 비교, 과장된 칭찬은 피하고 변화와 과정이 드러나도록 써줘. 강점과 앞으로 지원할 점을 균형 있게 표현하고, 보호자가 읽었을 때 이해하기 쉬운 문장으로 작성해줘.
+[관찰자료] __
+
+구성: 놀이와 탐구 / 의사소통 / 또래관계 / 신체·생활습관 / 예술적 표현 / 교사의 다음 지원.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>관찰자료를 토대로 성장과정을 서술할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 2. 관찰·기록·평가</span><h3>13. 관찰 메모에서 질문 만들기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-13">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-13">아래 관찰기록을 읽고 교사가 다음에 더 살펴보면 좋은 관찰 질문을 10개 만들어줘. 질문은 &#x27;왜 그랬을까?&#x27;처럼 원인을 단정하는 대신, 실제 행동을 더 알아볼 수 있게 작성해줘. 예: &#x27;어떤 상황에서 먼저 친구에게 말을 거는가?&#x27;
+[관찰기록] __</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>다음 관찰의 초점을 정할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💬</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 3. 학부모 소통</span><h3>14. 가정통신문 작성</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-14">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-14">너는 유치원 행정업무와 학부모 소통 경험이 풍부한 교사야. 다음 내용을 바탕으로 학부모 가정통신문을 작성해줘. 따뜻하고 친절하지만 공식 안내문답게 써줘. 스마트폰에서 읽기 편하도록 문장을 짧게 하고, 중요한 날짜·시간·장소·준비물은 눈에 잘 띄게 정리해줘.
+[안내 목적] __
+[대상] __
+[일시] __
+[장소] __
+[준비물] __
+[특이사항] __
+
+구성: 제목 / 인사말 / 핵심 일정 / 세부 안내 / 안전·복장 안내 / 준비물 체크리스트 / 문의 안내. 불필요하게 불안감을 조성하지 마.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>현장체험학습·행사·안내문 작성</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💬</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 3. 학부모 소통</span><h3>15. 알림장 문구</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-15">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-15">오늘 학급의 주요 놀이와 생활을 보호자에게 보내는 알림장 문구로 작성해줘. 개별 유아의 민감한 정보나 다른 유아와의 비교는 제외하고, 학급 전체의 경험을 중심으로 250~400자 정도로 써줘.
+[오늘 놀이] __
+[유아들의 반응] __
+[특별한 일정] __
+[가정 협조사항] __
+
+문체는 따뜻하고 구체적으로, &#x27;잘했어요&#x27; 중심이 아니라 무엇을 경험했는지가 보이게 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>하루 놀이와 생활을 짧게 공유할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💬</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 3. 학부모 소통</span><h3>16. 상담 일정 안내 메시지</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-16">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-16">유치원 학부모에게 보내는 상담 일정 안내 메시지를 작성해줘.
+[상담기간] __
+[신청방법] __
+[상담방식] 대면/전화/온라인 중 __
+[1회 상담시간] __분
+[마감일] __
+
+문자·카카오톡용 250자 이내 버전과 가정통신문용 상세 버전을 함께 만들어줘. 개인 상담 내용은 다른 보호자에게 노출되지 않도록 유의 문구도 포함해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>학부모 상담 일정을 안내할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💬</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 3. 학부모 소통</span><h3>17. 민감한 상담을 위한 말 정리</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-17">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-17">아래 상황을 보호자와 상담할 때 사용할 교사의 표현을 정리해줘. 사실 관찰과 해석을 분리하고, 아이를 낙인찍는 표현을 피하며, 가정과 함께 지원방안을 찾는 협력적 어조로 써줘.
+[관찰된 상황] __
+[반복 정도/맥락] __
+[교사가 이미 해본 지원] __
+
+① 상담 시작 문장 ② 사실 전달 ③ 보호자 의견을 묻는 질문 ④ 함께 시도할 지원 ⑤ 마무리 문장 ⑥ 피해야 할 표현 5개와 대체 표현으로 작성해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>생활습관·또래갈등 등 민감한 내용을 보호자에게 전달할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💬</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 3. 학부모 소통</span><h3>18. 결석·지각 관련 안내</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-18">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-18">학부모에게 유치원 출결 관련 협조를 요청하는 안내문을 작성해줘. [상황: __]을 비난하지 않고, 유아의 안전 확인과 교육과정 운영에 필요한 이유를 간단히 설명해줘. 보호자가 해야 할 행동(연락 시점, 연락 방법, 제출할 자료가 있다면)을 체크리스트로 정리해줘. 정확한 법적 제출서류는 기관 규정에 따라 달라질 수 있으므로 &#x27;유치원 안내에 따라 확인&#x27;이라고 표시해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>출결 협조를 정중히 요청할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💬</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 3. 학부모 소통</span><h3>19. 칭찬보다 성장 중심 피드백</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-19">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-19">다음 관찰을 바탕으로 보호자에게 전달할 성장 중심 피드백을 3가지 톤으로 작성해줘: ① 알림장 2~3문장 ② 상담에서 말하는 구어체 ③ 포트폴리오 서술체.
+[관찰] __
+
+&#x27;착하다/똑똑하다/최고다&#x27; 같은 성격·능력 라벨보다 실제 행동, 시도, 변화가 보이게 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>보호자에게 유아의 긍정적 변화를 구체적으로 전달할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🤝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 4. 생활지도·사회정서·또래관계</span><h3>20. 또래 갈등 중재 대화</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-20">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-20">만 __세 유아 두 명이 [갈등 상황: __]으로 다투고 있어. 교사가 누구 편을 들거나 즉시 해결책을 주기보다 서로의 말을 듣고 스스로 해결 방법을 찾게 돕는 중재 대화를 만들어줘. 교사가 실제로 말할 수 있는 짧은 문장으로 ① 안전 확보 ② 각자의 말 듣기 ③ 감정 확인 ④ 원하는 것 확인 ⑤ 해결안 생각하기 ⑥ 합의 확인 순서로 제시해줘. 억지 사과는 시키지 않는 방식으로 작성해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>장난감·순서·역할로 갈등이 생겼을 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🤝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 4. 생활지도·사회정서·또래관계</span><h3>21. 감정 표현 지원 문장</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-21">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-21">유아가 [상황: __]에서 [감정/행동: __]을 보이고 있어. 만 __세 발달수준에 맞게 교사가 사용할 수 있는 감정 코칭 문장을 15개 만들어줘. 감정을 인정하되 위험한 행동은 분명히 제한하는 문장, 선택지를 주는 문장, 진정 후 대화를 이어가는 문장을 구분해줘. 감정을 &#x27;나쁜 감정&#x27;으로 표현하지 마.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>울음·화·불안 상황에서 교사가 말할 문장이 필요할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🤝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 4. 생활지도·사회정서·또래관계</span><h3>22. 등원 거부 지원</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-22">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-22">만 __세 유아가 등원 시 보호자와 떨어지기 어려워하며 [행동: __]을 보여. 의학적 진단이나 원인 추정은 하지 말고, 교실에서 시도할 수 있는 안정적인 등원 루틴과 교사의 말, 보호자와 협의할 수 있는 방법을 제안해줘. 1주간 관찰 포인트도 함께 만들어줘. 심한·지속적인 어려움은 원내 담당자 및 보호자와 상의해야 함을 덧붙여줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>보호자와 헤어질 때 힘들어하는 유아를 지원할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🤝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 4. 생활지도·사회정서·또래관계</span><h3>23. 규칙을 유아와 함께 만들기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-23">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-23">만 __세 학급에서 [문제 상황: __]이 반복되고 있어. 교사가 규칙을 일방적으로 정하지 않고 유아와 함께 필요성을 생각하고 약속을 만들 수 있는 15분 대화 흐름을 설계해줘. 시작 상황 제시, 유아에게 물을 질문, 나온 의견을 정리하는 방법, 긍정문으로 약속 바꾸기, 그림으로 표시하는 방법까지 포함해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>교실 약속을 일방적 지시가 아닌 공동 규칙으로 만들 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🤝</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 4. 생활지도·사회정서·또래관계</span><h3>24. 전이시간 혼란 줄이기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-24">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-24">만 __세 __명 학급에서 [전이 상황: 정리/급식/화장실/바깥놀이 이동] 때 혼란이 커. 통제·호통 대신 환경과 루틴을 조정하는 방법을 10개 제안해줘. 대기시간을 줄이는 방법, 소집단 이동, 시각적 신호, 역할 선택, 교사의 짧은 안내 문장을 포함해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>정리·이동·급식 전환시간을 안정적으로 운영할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🛡️</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 5. 안전·건강·생활</span><h3>25. 현장체험학습 사전 안전점검</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-25">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-25">유치원 만 __세 유아 __명이 [장소: __]로 현장체험학습을 갈 예정이야. 교사용 사전 안전점검 체크리스트를 만들어줘. 이동, 승하차, 인원점검, 화장실, 식사·알레르기, 시설 이용, 실종 예방, 기상, 응급상황, 보호자 연락, 귀원 후 확인 항목으로 나눠줘. 기관 규정·교육청 지침·시설 안내를 우선 확인해야 하는 항목은 별도 표시해줘. 특정 법적 기준을 근거 없이 만들어내지 마.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>체험학습 전에 위험요소를 빠짐없이 검토할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🛡️</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 5. 안전·건강·생활</span><h3>26. 교실 위험요소 점검</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-26">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-26">유치원 교실 [공간 특징: __]을 대상으로 매일/매주 점검할 수 있는 안전 체크리스트를 작성해줘. 출입문, 가구, 모서리, 전기, 작은 물건, 미술재료, 놀잇감 파손, 미끄럼, 환기, 위생, 비상동선, 개인소지품을 포함해줘. &#x27;예/아니오/조치내용&#x27;으로 기록할 수 있게 표 형태의 항목으로 정리해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>교실 환경을 안전 관점에서 점검할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🛡️</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 5. 안전·건강·생활</span><h3>27. 폭염·한파·미세먼지 대응 안내 초안</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-27">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-27">[폭염/한파/미세먼지/호우/대설] 상황에서 유치원 운영 안내 초안을 작성해줘. 현재 수치나 경보 단계는 내가 별도로 확인해서 넣을 것이므로 임의로 만들지 말고 빈칸으로 표시해줘. ① 실외활동 조정 ② 복장·수분 ③ 등하원 ④ 건강 이상 관찰 ⑤ 보호자 협조 ⑥ 최신 기상청·교육청·기관 지침 확인 필요 항목으로 정리해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>기상 악화 시 학부모·교직원 안내를 준비할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🛡️</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 5. 안전·건강·생활</span><h3>28. 식품 알레르기 관련 안내 문구</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-28">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-28">유치원에서 식품 알레르기 관련 보호자 안내문 초안을 작성해줘. 특정 유아의 이름이나 질환 상세를 공개하지 말고, 보호자가 유치원에 알려야 할 정보, 급식·간식 확인, 교직원 공유 범위의 최소화, 응급 시 기관 절차 준수, 변경사항 즉시 알림을 포함해줘. 의료적 판단이나 약물 용량을 제시하지 말고 반드시 보호자·의료진·기관 지침을 따르도록 작성해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>알레르기 정보를 안전하게 다룰 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🛡️</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 5. 안전·건강·생활</span><h3>29. 안전교육 역할놀이 시나리오</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-29">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-29">만 __세 유아를 위한 [안전 주제: 교통/화재/낯선 사람/실종 예방/지진] 역할놀이 시나리오를 만들어줘. 겁을 주는 표현과 실제 사고 영상 사용 없이, 유아가 기억할 수 있는 3단계 행동을 연습하도록 구성해줘. 교사의 질문, 유아 역할, 상황카드 5개, 마무리 확인 질문을 포함해줘. 실제 비상절차는 유치원 및 관계기관 지침을 우선한다는 점도 표시해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>유괴·교통·화재 등 안전교육을 공포감 없이 진행할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎪</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 6. 행사·현장학습·프로젝트</span><h3>30. 행사 운영계획 초안</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-30">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-30">유치원 [행사명: __] 운영계획 초안을 작성해줘. 대상 __명, 일시 __, 장소 __, 행사 목적 __, 운영시간 __분이야. ① 목표 ② 사전준비 ③ 역할분담 ④ 시간대별 운영 ⑤ 공간배치 ⑥ 준비물 ⑦ 안전관리 ⑧ 보호자 안내 ⑨ 비상대안 ⑩ 행사 후 평가 질문으로 정리해줘. 유아의 대기시간과 보여주기식 연습을 최소화하는 방향으로 제안해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>학부모 참여수업·축제·발표회 등 행사 기획</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎪</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 6. 행사·현장학습·프로젝트</span><h3>31. 현장학습 사후 놀이 연결</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-31">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-31">만 __세 유아가 [체험 장소: __]에 다녀왔어. 체험 내용을 교사가 정답처럼 복습시키지 않고 유아의 기억·관심에서 놀이로 이어가도록 아이디어를 제안해줘. ① 회상 대화 질문 8개 ② 사진/표·티켓/지도 활용 ③ 역할놀이 ④ 구성놀이 ⑤ 미술·음악 ⑥ 과학·탐구 ⑦ 가정과 연결 가능한 선택 활동으로 정리해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>체험학습을 일회성으로 끝내지 않을 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎪</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 6. 행사·현장학습·프로젝트</span><h3>32. 계절 프로젝트 아이디어</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-32">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-32">[계절: __]에 만 __세 유아가 2~4주 동안 자연스럽게 이어갈 수 있는 프로젝트형 놀이의 가능성을 제안해줘. 완성해야 하는 결과물을 정해두지 말고, &#x27;관찰 → 질문 → 탐색 → 표현 → 공유 → 다시 놀이&#x27;가 순환하도록 작성해줘. 실내·실외 환경 구성, 자료, 지역사회 자원, 보호자 참여는 선택적으로 제안해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>봄·여름·가을·겨울 장기 놀이를 설계할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🎪</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 6. 행사·현장학습·프로젝트</span><h3>33. 졸업·수료 행사 유아중심 재구성</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-33">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-33">유치원 졸업/수료 행사를 유아중심으로 재구성해줘. 긴 줄세우기와 반복 연습, 완벽한 공연 중심 구성을 줄이고 유아가 자신의 한 해를 돌아보고 선택한 방식으로 표현할 수 있도록 제안해줘. 행사 60분 기준으로 구성하고, 가족 참여 요소·사진/영상 사용 시 개인정보 유의점·유아가 참여하지 않을 선택권도 고려해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>행사 연습 부담을 줄이고 의미를 살릴 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📄</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 7. 문서·행정 업무</span><h3>34. 회의록 정리</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-34">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-34">아래 유치원 교직원 회의 메모를 공식 회의록 초안으로 정리해줘. 없는 내용은 추정하지 말고 &#x27;확인 필요&#x27;라고 표시해줘.
+[회의명] __
+[일시] __
+[참석자] __
+[메모] __
+
+구성: 안건 / 주요 논의 / 결정사항 / 담당자 / 기한 / 추가 확인사항. 개인에 대한 평가나 불필요한 민감정보는 제거해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>교직원 회의 메모를 공식 회의록으로 정리할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📄</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 7. 문서·행정 업무</span><h3>35. 업무분장표 초안</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-35">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-35">유치원 교직원 업무분장표 초안을 만들어줘. 인원 __명, 주요 업무는 [__]야. 안전·교육과정·행사·학부모 소통·자료관리·환경·방과후 등으로 분류하고, 업무가 한 사람에게 과도하게 집중되지 않도록 균형 원칙을 제안해줘. 실제 담당자 이름 대신 교사 A/B/C로 표시하고 최종 배정은 관리자가 조정하도록 안내해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>학기 초 교직원 업무를 배분할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📄</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 7. 문서·행정 업무</span><h3>36. 공문·보고 문장 다듬기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-36">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-36">아래 문장을 유치원/교육기관 공문 또는 보고서에 적합한 간결하고 객관적인 문체로 다듬어줘. 의미를 새로 추가하지 말고, 날짜·숫자·고유명사는 원문을 유지해줘. 불확실한 표현은 임의로 확정하지 마.
+[원문] __
+
+① 다듬은 문장 ② 수정한 이유 3가지 ③ 추가 확인이 필요한 정보가 있으면 표시해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>초안을 공적 문체로 바꿀 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📄</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 7. 문서·행정 업무</span><h3>37. 주간 업무 우선순위 정리</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-37">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-37">이번 주 유치원 업무 목록을 중요도·긴급도·마감·유아 안전 영향 기준으로 정리해줘.
+[업무 목록과 마감] __
+
+표 형태로 &#x27;업무/마감/예상 소요/우선순위/선행조건/위임 가능 여부/다음 행동&#x27;을 정리하고, 하루에 과도하게 몰리지 않도록 5일 실행계획으로 분배해줘. 법정·기관 필수업무 여부는 내가 확인해야 하므로 임의 판단하지 마.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>업무가 많을 때 우선순위를 정할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">📄</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 7. 문서·행정 업무</span><h3>38. 설문 결과 요약</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-38">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-38">아래 익명화된 설문 자유응답을 주제별로 분류해 요약해줘. 소수 의견도 사라지지 않게 별도로 표시하고, 긍정/개선/요청/기타로 구분해줘. 빈도는 실제 응답 수를 셀 수 있는 경우에만 숫자로 써줘. 개인을 특정할 수 있는 내용은 제거해줘.
+[설문 응답] __</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>보호자·교직원 설문 자유응답을 정리할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💡</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 8. 특색교육·창의·디지털·AI</span><h3>39. AI를 이용한 이야기 소재 만들기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-39">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-39">만 __세 유아가 함께 이야기를 만들 수 있도록 &#x27;완성된 동화&#x27;가 아니라 선택 가능한 이야기 재료를 만들어줘. 주제는 [__]야. 등장인물 카드 6개, 장소 카드 6개, 문제 상황 카드 6개, 신기한 물건 카드 6개를 한 문장씩 제시해줘. 무섭거나 폭력적인 내용, 상업 캐릭터 모방은 피하고 유아가 자유롭게 조합하도록 해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>유아와 함께 이야기 만들기 재료를 준비할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💡</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 8. 특색교육·창의·디지털·AI</span><h3>40. 동화 후속 놀이 질문</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-40">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-40">그림책 [제목: __]을 읽은 뒤 만 __세 유아와 나눌 열린 질문을 15개 만들어줘. 사실 확인 질문은 3개 이하로 하고, 인물의 마음 상상, 다른 선택, 자신의 경험, 그림 관찰, 이어질 이야기, 놀이로 바꾸는 질문을 중심으로 해줘. 책의 실제 내용이 제공되지 않았다면 내용을 아는 척하지 말고 내가 줄거리나 장면을 입력하도록 빈칸 질문으로 작성해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>책 읽기 후 정답식 독후활동을 피하고 싶을 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💡</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 8. 특색교육·창의·디지털·AI</span><h3>41. 유아용 이미지 생성 프롬프트</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-41">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-41">유치원 수업자료로 사용할 안전하고 밝은 교육용 이미지 생성 프롬프트를 작성해줘.
+[주제] __
+[등장인물] __
+[상황] __
+[비율] __
+[스타일] 따뜻한 세미플랫 일러스트
+
+실존 유아의 얼굴을 재현하지 않고, 상업 캐릭터나 특정 작가의 화풍을 그대로 모방하지 않으며, 배경과 소품이 한국 유치원 환경에 자연스럽도록 한국어 프롬프트와 영어 프롬프트를 각각 작성해줘. 이미지 안 글자는 넣지 않도록 지시해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>교사가 수업 자료용 그림을 제작할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💡</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 8. 특색교육·창의·디지털·AI</span><h3>42. 사진 없는 가상 상황자료 만들기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-42">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-42">유아의 실제 사진을 사용하지 않고 [주제: 차례 기다리기/친구에게 부탁하기/속상함 표현하기/안전하게 걷기]를 이야기할 수 있는 가상의 상황카드 6장을 기획해줘. 각 카드마다 장면 설명, 교사가 물을 열린 질문 2개, 유아가 생각해볼 선택지 2개를 제안해줘. 한 가지 행동만 &#x27;정답&#x27;처럼 제시하지 마.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>개인정보 없이 사회적 상황 그림 자료를 기획할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">💡</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 8. 특색교육·창의·디지털·AI</span><h3>43. AI 답변 검토 체크리스트</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-43">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-43">유치원 교사용 &#x27;AI 생성 결과 검토 체크리스트&#x27;를 만들어줘. 최소한 다음을 포함해: 사실 오류, 날짜/숫자, 교육과정 적합성, 연령 적합성, 유아 존중 언어, 편견·고정관념, 개인정보, 저작권/상업 캐릭터, 안전, 의료·법률 내용, 기관 지침과의 충돌, 보호자에게 전달해도 되는 표현. 각 항목을 &#x27;확인/수정 필요/해당 없음&#x27;으로 체크할 수 있게 해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>생성형 AI가 만든 자료를 교사가 최종 검토할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🧩</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 9. 환경구성·자료제작</span><h3>44. 놀이영역 재배치</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-44">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-44">만 __세 학급의 최근 놀이 관심은 [__]이야. 현재 교실 공간은 [영역/가구: __]로 구성되어 있어. 새 교구를 많이 사지 않고 기존 가구와 재료를 재배치해 놀이가 연결되도록 환경구성 아이디어를 제안해줘. 동선, 소음, 휴식공간, 시야 확보, 위험요소, 유아가 스스로 자료를 꺼내고 정리할 수 있는 높이를 고려해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>교실 환경을 유아의 최근 놀이에 맞춰 조정할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🧩</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 9. 환경구성·자료제작</span><h3>45. 교구 라벨 문구</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-45">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-45">만 __세 유아가 스스로 알아볼 수 있는 교구 정리 라벨 문구를 만들어줘. [교구 목록: __]. 글자만 읽지 못해도 그림과 함께 이해할 수 있도록 각 항목마다 &#x27;짧은 한글 이름 + 그림 아이콘 설명 + 정리 위치를 알려주는 한 문장&#x27;을 제안해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>정리 라벨·영역 표지 문구를 만들 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🧩</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 9. 환경구성·자료제작</span><h3>46. 게시판 문구 다듬기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-46">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-46">유치원 [게시 내용: __]을 위한 게시판 제목 15개와 1~2문장 소개글을 만들어줘. &#x27;잘했어요&#x27;, &#x27;최고&#x27;, &#x27;우수작&#x27;처럼 비교·평가하는 표현은 피하고 유아의 과정·생각·놀이를 존중하는 문구로 써줘. 작품을 동일한 틀로 만들었다는 느낌보다 서로 다른 표현을 환영하는 톤으로 작성해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>유아 작품·놀이 사진 게시판 제목을 만들 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🌱</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 10. 교사 전문성·연수·성찰</span><h3>47. 수업·놀이 지원 자기성찰</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-47">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-47">오늘 유치원에서 있었던 아래 상황을 바탕으로 교사 자기성찰 질문을 만들어줘. 교사를 평가하거나 비난하지 말고 다음 실천을 찾는 방식으로 작성해줘.
+[상황 메모] __
+
+① 유아의 선택을 존중했는가 ② 기다림이 충분했는가 ③ 질문이 정답을 유도하지 않았는가 ④ 환경이 놀이를 지원했는가 ⑤ 안전과 자율성의 균형 ⑥ 내 감정이 개입에 미친 영향 ⑦ 내일 바꿔볼 작은 행동 1가지의 관점에서 질문과 예시를 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>하루를 마치고 교사 개입을 돌아볼 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🌱</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 10. 교사 전문성·연수·성찰</span><h3>48. 동료장학 피드백 문장</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-48">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-48">동료 교사의 놀이 지원 장면에 대해 존중받는 느낌을 주는 피드백 문장을 만들어줘. 관찰 사실과 개인 의견을 분리하고, 잘한 점을 막연한 칭찬으로 표현하지 말고 구체적 행동을 언급해줘. 개선 제안은 &#x27;왜 안 했나요?&#x27; 대신 궁금증과 선택지를 제시하는 방식으로 써줘.
+[관찰 메모] __
+
+① 사실 진술 ② 의미 있게 본 점 ③ 궁금한 점 ④ 함께 고민할 질문 ⑤ 가능한 대안의 순서로 작성해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>동료 교사에게 관찰 피드백을 줄 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🌱</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 10. 교사 전문성·연수·성찰</span><h3>49. 연수자료 요약</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-49">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-49">아래 유아교육 연수자료를 교사 실무용으로 요약해줘. 원문에 없는 내용을 추가하지 말고, 핵심 개념 5개, 현장에서 바로 적용할 점 5개, 주의할 오해 3개, 우리 유치원에서 논의할 질문 5개로 정리해줘. 정확한 정책·법령·지침은 최신 원문을 다시 확인하도록 표시해줘.
+[연수자료] __</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>긴 연수자료를 실무 적용 중심으로 정리할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🌱</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 10. 교사 전문성·연수·성찰</span><h3>50. 교육과정 협의회 질문</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-50">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-50">만 __세 교육과정 협의회에서 사용할 질문 15개를 만들어줘. 놀이 흐름, 환경, 유아 참여, 교사 개입, 관찰기록, 보호자 소통, 안전, 특별행사, 다음 주 지원을 고르게 포함해줘. 문제 보고가 아니라 서로의 관찰과 아이디어를 나누는 질문으로 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>학년/연령별 교사 협의회를 준비할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🌈</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 11. 특수·다양성·포용적 지원</span><h3>51. 모두가 참여 가능한 활동으로 수정</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-51">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-51">아래 활동을 다양한 발달 수준의 유아가 각자 가능한 방식으로 참여할 수 있도록 수정해줘. 특정 유아를 진단하거나 별도로 고립시키는 방식은 피하고, 전체 환경을 유연하게 만드는 보편적 설계를 우선해줘.
+[기존 활동] __
+[참여에 어려움이 예상되는 지점] __
+
+① 선택 가능한 참여 방식 ② 시각자료 ③ 언어를 줄인 안내 ④ 감각 자극 조절 ⑤ 쉬는 선택 ⑥ 또래 협력(강요하지 않기) ⑦ 교사 관찰 포인트로 정리해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>발달 수준·언어·감각 차이를 고려해 활동을 조정할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🌈</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 11. 특수·다양성·포용적 지원</span><h3>52. 다문화·다언어 가정 안내문 쉽게 쓰기</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-52">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-52">아래 유치원 안내문을 쉬운 한국어로 다시 써줘. 한 문장에 한 가지 정보만 넣고, 어려운 행정용어에는 쉬운 뜻을 괄호로 덧붙여줘. 핵심 날짜·시간·준비물은 표로 정리해줘. 번역이 필요한 경우 의미가 달라질 수 있는 기관명·고유명사는 원문을 유지해줘.
+[안내문] __</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>한국어가 익숙하지 않은 보호자를 고려할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🌈</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 11. 특수·다양성·포용적 지원</span><h3>53. 편견 없는 역할놀이 자료 점검</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-53">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-53">아래 역할놀이 환경이나 이야기자료에 성별, 직업, 가족형태, 장애, 문화에 대한 고정관념이 들어 있는지 점검해줘. 문제라고 단정하기보다 어떤 표현이 편향으로 읽힐 수 있는지 근거를 설명하고, 다양한 사람을 자연스럽게 포함하도록 대체 아이디어를 제안해줘.
+[자료 설명] __</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>직업·가족·성 역할 고정관념을 줄일 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🚨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 12. 긴급 상황에서의 문서·소통 초안</span><h3>54. 사고 발생 사실 안내 초안</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-54">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-54">유치원에서 발생한 [사고/상황: __]에 대해 보호자 안내 초안을 작성해줘. 사실로 확인된 내용만 쓰고 원인이나 책임을 추정하지 말아줘. 개인정보가 노출되지 않도록 다른 유아의 신원을 언급하지 마. ① 발생 시각·장소 ② 확인된 상황 ③ 즉시 취한 조치 ④ 현재 상태(확인된 범위) ⑤ 이후 조치 ⑥ 문의 창구로 구성해줘. 응급·의료 판단이나 법적 보고 의무는 기관의 비상 매뉴얼과 관계기관 지침을 우선해야 한다고 표시해줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>사고 후 보호자에게 사실 중심으로 안내할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🚨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 12. 긴급 상황에서의 문서·소통 초안</span><h3>55. 감염병 안내문 초안</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-55">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-55">유치원 감염병 관련 안내문 초안을 만들어줘. 질병명 [__], 확인된 공지사항 [__], 유치원 조치 [__]를 바탕으로 작성해줘. 확진자 신원이나 추측 가능한 정보는 공개하지 말고, 등원 가능 시점·검사·치료 같은 의료 기준은 임의로 정하지 말며 질병관리청·보건당국·교육청 및 의료진의 최신 안내를 확인하도록 명시해줘. 보호자가 관찰할 증상과 연락 방법은 기관에서 확인한 내용만 넣을 수 있게 빈칸으로 남겨줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>감염병 관련 공지를 작성할 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">🚨</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 12. 긴급 상황에서의 문서·소통 초안</span><h3>56. 비상연락 메시지</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-56">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-56">유치원 보호자에게 보내는 비상연락 메시지를 3단계로 작성해줘: ① 90자 이내 긴급 문자 ② 250자 이내 추가 안내 ③ 상세 공지. 상황은 [__], 변경 내용은 [__], 보호자가 해야 할 일은 [__], 문의처는 [__]야. 확인되지 않은 정보는 넣지 말고, 지나친 불안 표현 없이 핵심 행동이 먼저 보이도록 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 목적</strong><p>갑작스러운 일정 변경·귀가 요청 등을 신속히 알릴 때</p></div>
+  <p class="tip"><b>현장 팁</b> · 빈칸(__)을 실제 상황으로 바꾸고, AI 답변을 그대로 배포하지 말고 유치원 규정·학급 상황·최신 지침에 맞게 반드시 수정하세요.</p>
+</article><article class="prompt-card">
+  <div class="card-top">
+    <div class="card-icon">⚡</div>
+    <div class="card-title"><span>유치원 실무핵심프롬프트 · 부록 A</span><h3>자주 쓰는 후속 명령어 20개</h3></div>
+    <button class="copy" type="button" data-target="prompt-core-appendix-a">한번에 복사</button>
+  </div>
+  <pre class="prompt" id="prompt-core-appendix-a">1. 이 답변을 만 3세가 이해할 수 있는 수준으로 더 쉽게 바꿔줘.
+2. 교사가 실제로 말할 수 있는 짧은 문장으로 바꿔줘.
+3. 교사 주도 요소를 줄이고 유아가 선택할 수 있는 부분을 늘려줘.
+4. 준비물을 절반 이하로 줄여서 다시 제안해줘.
+5. 교실에 있는 흔한 재료만 사용하도록 바꿔줘.
+6. 10분 안에 실행 가능한 버전으로 줄여줘.
+7. 보호자에게 보내는 300자 이내 메시지로 바꿔줘.
+8. 공식 가정통신문 문체로 다듬어줘.
+9. 표 대신 체크리스트 형식으로 바꿔줘.
+10. 핵심만 5개로 요약해줘.
+11. 유아 이름과 개인 정보를 모두 가명으로 바꿔줘.
+12. 평가·진단·낙인으로 읽힐 수 있는 표현이 있는지 찾아 수정해줘.
+13. 정답을 유도하는 질문을 열린 질문으로 바꿔줘.
+14. 유아의 자율성을 침해할 수 있는 부분을 찾아 대안을 제시해줘.
+15. 안전상 위험요소를 별도 항목으로 점검해줘.
+16. 사실 확인이 필요한 부분에는 [확인 필요] 표시를 붙여줘.
+17. 내가 제공하지 않은 정보는 추측하지 말고 빈칸으로 남겨줘.
+18. 누리과정 5개 영역과 실제 관찰 근거가 있는 부분만 연결해줘.
+19. 교사가 바로 인쇄할 수 있는 A4 1장 구성으로 다시 정리해줘.
+20. 초안의 장점 3개와 수정이 필요한 점 3개를 먼저 알려준 뒤 개선본을 써줘.</pre>
+  <div class="teacher-guide"><strong>✏️ 사용 방법</strong><p>AI가 만든 첫 답변을 우리 반 상황에 맞게 수정·축약·점검할 때 필요한 문장을 골라 이어서 입력하세요.</p></div>
+</article>
+      </section>
+
       <footer><div class="footer-grid"><div><strong>AI콘텐츠마케팅연구소 유쌤클래스 김유성 강사</strong><p>현장의 전문적 판단을 더 빠르고 분명하게 실행하는 AI 실무 교육</p></div><div class="footer-links"><a href="https://www.yussamclass.com" target="_blank" rel="noopener">www.yussamclass.com</a><br><a href="tel:01027819669">010-2781-9669</a></div></div></footer>
     </main>
   </div>
@@ -1062,6 +1867,45 @@ Absolutely avoid:
       input.value='';
       runSearch(false);
       input.focus();
+    });
+  })();
+
+
+  // Mobile / tablet compact TOC drawer
+  (()=>{
+    const body = document.body;
+    const toggle = document.querySelector('.mobile-menu-toggle');
+    const drawer = document.querySelector('.mobile-toc-drawer');
+    const overlay = document.querySelector('.mobile-toc-overlay');
+    const closeBtn = document.querySelector('.mobile-menu-close');
+    if(!toggle || !drawer || !overlay || !closeBtn) return;
+
+    const openMenu = ()=>{
+      body.classList.add('mobile-toc-open');
+      toggle.setAttribute('aria-expanded','true');
+      drawer.setAttribute('aria-hidden','false');
+      overlay.setAttribute('aria-hidden','false');
+      closeBtn.focus({preventScroll:true});
+    };
+    const closeMenu = (returnFocus=false)=>{
+      body.classList.remove('mobile-toc-open');
+      toggle.setAttribute('aria-expanded','false');
+      drawer.setAttribute('aria-hidden','true');
+      overlay.setAttribute('aria-hidden','true');
+      if(returnFocus) toggle.focus({preventScroll:true});
+    };
+
+    toggle.addEventListener('click',()=> body.classList.contains('mobile-toc-open') ? closeMenu() : openMenu());
+    closeBtn.addEventListener('click',()=>closeMenu(true));
+    overlay.addEventListener('click',()=>closeMenu(true));
+    drawer.querySelectorAll('a').forEach(link=>{
+      link.addEventListener('click',()=>closeMenu(false));
+    });
+    document.addEventListener('keydown',e=>{
+      if(e.key==='Escape' && body.classList.contains('mobile-toc-open')) closeMenu(true);
+    });
+    window.addEventListener('resize',()=>{
+      if(window.innerWidth>1050 && body.classList.contains('mobile-toc-open')) closeMenu(false);
     });
   })();
 
