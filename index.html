@@ -1,0 +1,898 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#176b52">
+  <meta name="description" content="남성유치원 생성형 AI 기반 유아 교육과정 실행력 강화 교원 연수 실습 가이드">
+  <title>생성형 AI 기반 유아 교육과정 실행력 강화</title>
+  <style>
+    :root{--forest:#176b52;--forest-dark:#0c4a3a;--mint:#dff6ec;--cream:#fffaf0;--gold:#f1b845;--cyan:#31b7c9;--ink:#17332c;--muted:#5f746e;--line:#d8e9e1;--white:#fff;--shadow:0 16px 42px rgba(23,75,61,.11);--radius:24px}
+    *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:24px}body{margin:0;background:linear-gradient(180deg,#eefaf5 0,#fffaf1 540px,#f8fbf9 100%);color:var(--ink);font-family:"Pretendard","Noto Sans KR","Apple SD Gothic Neo",system-ui,sans-serif;font-size:17px;line-height:1.72;overflow-x:hidden}
+    button,a{font:inherit}.skip{position:fixed;left:10px;top:-100px;z-index:999;background:#fff;padding:12px 16px;border-radius:10px;color:var(--forest-dark)}.skip:focus{top:10px}
+    .shell{max-width:1500px;margin:0 auto;display:grid;grid-template-columns:288px minmax(0,1fr);gap:36px;padding:28px 36px 90px}
+    .sidebar{position:sticky;top:24px;height:calc(100vh - 48px);align-self:start;background:rgba(255,255,255,.92);backdrop-filter:blur(14px);border:1px solid rgba(23,107,82,.13);border-radius:28px;padding:22px;box-shadow:var(--shadow);display:flex;flex-direction:column;overflow:auto}
+    .brand{display:flex;align-items:center;gap:12px;padding:4px 4px 18px;border-bottom:1px solid var(--line)}.brand-mark{width:52px;height:52px;border-radius:18px;background:linear-gradient(145deg,var(--forest),var(--cyan));display:grid;place-items:center;color:#fff;font-size:25px;font-weight:900;box-shadow:0 8px 20px rgba(23,107,82,.22)}.brand strong{font-size:18px;line-height:1.3}.brand span{display:block;font-size:13px;color:var(--muted);font-weight:700;margin-top:3px}
+    .toc-title{font-size:13px;letter-spacing:.08em;color:var(--forest);font-weight:900;margin:20px 8px 8px}.toc{display:grid;gap:5px}.toc a{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:12px;color:var(--ink);text-decoration:none;font-weight:750;font-size:15px;line-height:1.3}.toc a:hover,.toc a.active{background:var(--mint);color:var(--forest-dark)}.toc b{flex:0 0 28px;height:28px;display:grid;place-items:center;border-radius:9px;background:#f2f8f5;color:var(--forest);font-size:13px}
+    .padlet{margin-top:14px;margin-bottom:14px;display:flex;align-items:center;gap:12px;padding:14px;border:2px solid #e5e2ff;border-radius:17px;background:linear-gradient(135deg,#fff,#f7f5ff);color:#241f5c;text-decoration:none;font-weight:900;box-shadow:0 8px 20px rgba(76,64,170,.1)}.padlet:hover{transform:translateY(-2px)}.padlet-logo{width:40px;height:40px;border-radius:12px;background:#1f1647;color:#fff;display:grid;place-items:center;font-size:22px;position:relative}.padlet-logo:after{content:"";position:absolute;right:-3px;top:-3px;width:11px;height:11px;border-radius:50%;background:#ffcb45;border:3px solid #fff}.padlet small{display:block;font-weight:650;color:#655f82;font-size:12px}
+    main{min-width:0}.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#0c513f,#17785c 55%,#208f7b);color:#fff;border-radius:34px;padding:54px 56px 46px;box-shadow:0 24px 70px rgba(12,74,58,.22)}.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;background:rgba(255,255,255,.09)}.hero:before{width:290px;height:290px;right:-85px;top:-120px}.hero:after{width:160px;height:160px;right:140px;bottom:-110px}.eyebrow{display:inline-flex;gap:9px;align-items:center;padding:8px 14px;border:1px solid rgba(255,255,255,.35);border-radius:99px;background:rgba(255,255,255,.11);font-size:14px;font-weight:800;letter-spacing:.03em}.eyebrow i{width:9px;height:9px;border-radius:50%;background:#ffd56f}.hero h1{max-width:920px;margin:22px 0 16px;font-size:clamp(1.8rem,3.4vw,3.7rem);line-height:1.14;letter-spacing:-.04em}.hero h1 em{display:block;color:#ffe08a;font-style:normal}.hero p{max-width:760px;margin:0;color:#e8fff6;font-size:clamp(1.02rem,1.4vw,1.25rem);font-weight:600}.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}.hero-meta span{padding:9px 13px;border-radius:12px;background:rgba(255,255,255,.12);font-size:14px;font-weight:750}
+    .notice{margin:24px 0 34px;padding:20px 22px;border-radius:20px;background:#fff7d9;border:1px solid #f4d985;display:flex;gap:15px;align-items:flex-start}.notice-icon{flex:0 0 38px;height:38px;border-radius:13px;background:var(--gold);display:grid;place-items:center;font-size:20px}.notice strong{display:block;color:#714f00;font-size:18px}.notice p{margin:2px 0 0;color:#705f31}
+    .chapter{scroll-margin-top:24px;margin:54px 0}.chapter-head{display:flex;gap:16px;align-items:center;margin-bottom:20px}.chapter-no{flex:0 0 52px;height:52px;border-radius:17px;background:linear-gradient(145deg,var(--forest),#239377);color:#fff;display:grid;place-items:center;font-size:22px;font-weight:900;box-shadow:0 8px 18px rgba(23,107,82,.18)}.chapter h2{margin:0;font-size:clamp(1.65rem,2.4vw,2.35rem);line-height:1.18;letter-spacing:-.035em}.chapter-intro{margin:4px 0 0;color:var(--muted)}
+    .prompt-card{background:rgba(255,255,255,.97);border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 12px 34px rgba(38,84,71,.07);overflow:hidden;margin:20px 0}.card-top{display:flex;align-items:center;gap:14px;padding:20px 22px;border-bottom:1px solid var(--line);background:linear-gradient(90deg,#fff,#f5fbf8)}.card-icon{flex:0 0 44px;height:44px;border-radius:15px;background:var(--mint);display:grid;place-items:center;font-size:22px}.card-title{min-width:0}.card-title h3{margin:0;font-size:20px;line-height:1.35}.card-title span{font-size:13px;color:var(--forest);font-weight:850}.copy{margin-left:auto;border:0;border-radius:13px;padding:11px 16px;background:var(--forest);color:#fff;font-weight:900;cursor:pointer;min-width:108px;box-shadow:0 7px 15px rgba(23,107,82,.18)}.copy:hover{background:var(--forest-dark)}.copy:focus-visible,.top:focus-visible,a:focus-visible{outline:4px solid rgba(49,183,201,.35);outline-offset:3px}.copy.done{background:#137c9a}.prompt{margin:0;padding:24px 25px;white-space:pre-wrap;overflow-wrap:anywhere;font-family:inherit;font-size:16px;line-height:1.75;color:#223e36;background:#fff}.teacher-guide{border-top:1px dashed #bdd9ce;padding:18px 22px;background:#f3fbf7}.teacher-guide strong{color:var(--forest-dark)}.teacher-guide p{margin:4px 0 0;color:#48655c}.sample-example{margin:12px 0 0;padding:14px 16px;border:1px solid #cfe8dd;border-radius:14px;background:#ffffff}.sample-example strong{display:block;color:#0c4a3a;margin-bottom:6px}.sample-example pre{margin:0;white-space:pre-wrap;font-family:inherit;font-size:14px;line-height:1.65;color:#3e5d54}.tip{margin:0 22px 22px;padding:13px 15px;border-left:5px solid var(--gold);background:#fff9e7;border-radius:0 12px 12px 0;color:#65511e}.basic{margin:0 22px 20px;padding:16px 18px;border:1px solid #d9e5e1;border-radius:15px;background:#f7faf8}.basic b{color:var(--forest)}.basic .copy{float:right;min-width:auto;padding:7px 11px;font-size:13px}.basic p{margin:8px 0 0;white-space:pre-wrap;clear:both}
+    .checks{display:grid;gap:11px;margin-top:18px}.check{display:flex;gap:12px;align-items:flex-start;padding:15px 17px;border:1px solid var(--line);border-radius:15px;background:#fff}.check span{flex:0 0 27px;height:27px;border-radius:9px;background:var(--mint);color:var(--forest);display:grid;place-items:center;font-weight:900}.sources{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.source{padding:17px 18px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--forest-dark);text-decoration:none;font-weight:800}.source:hover{border-color:var(--cyan);box-shadow:0 8px 20px rgba(49,183,201,.1)}
+    footer{margin-top:60px;padding:30px;border-radius:25px;background:#163f35;color:#eafff6}.footer-grid{display:flex;justify-content:space-between;gap:24px;align-items:flex-end}.footer-grid strong{display:block;font-size:20px;color:#fff}.footer-grid p{margin:7px 0 0}.footer-links{text-align:right}.footer-links a{color:#ffe08a;font-weight:800}.top{position:fixed;right:max(22px,env(safe-area-inset-right));bottom:max(22px,env(safe-area-inset-bottom));z-index:50;width:72px;height:72px;border:0;border-radius:22px;background:var(--forest-dark);color:#fff;font-weight:900;cursor:pointer;box-shadow:0 12px 30px rgba(12,74,58,.35);opacity:0;transform:translateY(15px);pointer-events:none;transition:.2s}.top.show{opacity:1;transform:none;pointer-events:auto}.mobile-bar{display:none}
+    @media(max-width:1050px){.shell{grid-template-columns:230px minmax(0,1fr);gap:22px;padding:22px}.sidebar{padding:16px}.hero{padding:44px 38px}.toc a{font-size:14px;padding:9px}}
+    @media(max-width:780px){body{font-size:16px}.shell{display:block;padding:0 0 80px}.sidebar{display:none}.mobile-bar{display:flex;position:sticky;top:0;z-index:40;align-items:center;gap:9px;padding:10px 14px;background:rgba(255,255,255,.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}.mobile-bar::-webkit-scrollbar{display:none}.mobile-bar a{flex:0 0 auto;text-decoration:none;color:var(--forest-dark);background:#edf8f3;border:1px solid #d9ece4;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:850}.mobile-bar a:first-child{background:var(--forest);color:#fff}.hero{border-radius:0;padding:38px 20px 34px}.hero h1{font-size:clamp(1.75rem,8.8vw,2.75rem)}.hero-meta{gap:7px}.hero-meta span{font-size:12px}.notice,.chapter,footer{margin-left:14px;margin-right:14px}.notice{padding:16px}.chapter{margin-top:42px}.chapter-head{padding:0 4px}.chapter-no{flex-basis:46px;height:46px}.prompt-card{border-radius:19px}.card-top{padding:16px;align-items:flex-start}.card-icon{display:none}.card-title h3{font-size:18px}.copy{min-width:88px;padding:10px 12px}.prompt{padding:19px 17px;font-size:15.5px;line-height:1.7}.teacher-guide{padding:16px 17px}.tip,.basic{margin-left:16px;margin-right:16px}.sources{grid-template-columns:1fr}.footer-grid{display:block}.footer-links{text-align:left;margin-top:18px}.top{width:62px;height:62px;border-radius:20px;right:14px;bottom:14px}}
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+
+    /* ===== Mobile stability hardening ===== */
+    html,body{width:100%;max-width:100%;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+    img,svg,video,canvas,iframe{max-width:100%;height:auto}
+    table{max-width:100%}
+    a,button{touch-action:manipulation;-webkit-tap-highlight-color:rgba(23,107,82,.12)}
+    .hero h1,.hero p,.chapter h2,.card-title h3,.notice,.source,footer{overflow-wrap:anywhere;word-break:keep-all}
+    .prompt,.sample-example pre,.basic p{overflow-wrap:anywhere;word-break:break-word}
+    .copy{flex-shrink:0}
+    .source{min-width:0;overflow-wrap:anywhere}
+    .footer-links{min-width:0;overflow-wrap:anywhere}
+    .instructor-card img{max-width:100%}
+    @media(max-width:780px){
+      html{scroll-padding-top:64px}
+      body{min-width:320px}
+      .mobile-bar{
+        padding-top:max(10px,env(safe-area-inset-top));
+        padding-left:max(14px,env(safe-area-inset-left));
+        padding-right:max(14px,env(safe-area-inset-right));
+        -webkit-overflow-scrolling:touch;
+        overscroll-behavior-x:contain
+      }
+      .hero{padding-left:max(20px,env(safe-area-inset-left));padding-right:max(20px,env(safe-area-inset-right))}
+      .hero h1{font-size:clamp(1.72rem,8.3vw,2.65rem);line-height:1.16}
+      .hero h1 em{margin-top:5px}
+      .eyebrow{max-width:100%;white-space:normal;line-height:1.45}
+      .hero p{font-size:1rem;line-height:1.65}
+      .hero-meta span{max-width:100%}
+      .notice,.chapter,footer{width:auto;max-width:calc(100% - 28px)}
+      .chapter-head{align-items:flex-start}
+      .chapter-head>div:last-child{min-width:0}
+      .chapter h2{font-size:clamp(1.45rem,6.2vw,1.9rem)}
+      .prompt-card{width:100%;max-width:100%}
+      .card-top{flex-wrap:wrap;gap:10px}
+      .card-title{flex:1 1 170px}
+      .copy{margin-left:auto;min-height:44px}
+      .prompt{max-width:100%;overflow-x:hidden}
+      .teacher-guide,.sample-example,.tip,.basic{max-width:100%}
+      .sources{width:100%}
+      .source{display:block;width:100%}
+      footer{padding:24px 20px}
+      .footer-grid{min-width:0}
+      .footer-grid p,.footer-links a{overflow-wrap:anywhere}
+      .top{min-width:56px;min-height:56px}
+    }
+    @media(max-width:380px){
+      .hero{padding-top:32px;padding-bottom:30px}
+      .hero h1{font-size:clamp(1.58rem,8vw,2.2rem)}
+      .mobile-bar a{padding:8px 10px;font-size:12px}
+      .card-title h3{font-size:17px}
+      .copy{width:100%;margin-left:0}
+      .notice{gap:10px}
+      .notice-icon{flex-basis:34px;height:34px}
+    }
+
+  </style>
+</head>
+<body>
+  <a class="skip" href="#main">본문 바로가기</a>
+  <nav class="mobile-bar" aria-label="모바일 목차">
+    <a href="#top">처음</a><a href="https://padlet.com/yu_ssam/76" target="_blank" rel="noopener">Padlet ↗</a><a href="#chapter-0">좋은 프롬프트</a><a href="#chapter-1">문서</a><a href="#chapter-2">이미지</a><a href="#chapter-3">영상</a><a href="#chapter-4">노래</a><a href="#chapter-5">동화 PPT</a><a href="#chapter-6">검토</a>
+  </nav>
+  <div class="shell" id="top">
+    <aside class="sidebar" aria-label="고정 목차">
+      <div class="brand"><div class="brand-mark">AI</div><div><strong>남성유치원<br>프롬프트 가이드</strong><span>2026. 09. 08.</span></div></div>
+      <div class="toc-title">간단 목차</div>
+      <nav class="toc"><a href="#chapter-0"><b>0</b>좋은 프롬프트</a><a href="#chapter-1"><b>1</b>문서 만들기</a><a href="#chapter-2"><b>2</b>이미지 만들기</a><a href="#chapter-3"><b>3</b>영상 만들기</a><a href="#chapter-4"><b>4</b>노래 만들기</a><a href="#chapter-5"><b>5</b>동화구연 PPT</a><a href="#chapter-6"><b>6</b>검토 체크리스트</a></nav>
+      <a class="padlet" href="https://padlet.com/yu_ssam/76" target="_blank" rel="noopener">
+        <span class="padlet-logo" style="background:#fff;overflow:hidden">
+          <img src="https://padlet.com/favicon.ico" alt="Padlet 공식 로고" width="34" height="34" style="display:block;width:34px;height:34px;object-fit:contain" onerror="this.style.display='none'">
+        </span>
+        <span>Padlet<small>스터디 게시판 열기 ↗</small></span>
+      </a>
+      <div class="instructor-card" style="font-family:Arial,'Malgun Gothic';color:#17213a;width:100%;max-width:100%;border:1px solid #cbd2de;border-radius:11px;overflow:hidden;background:#fff;margin-top:16px;flex:0 0 auto">
+        <div style="height:5px;background:#d3ad52"></div>
+        <div style="padding:14px 12px;background:#102653">
+          <table style="width:100%;border-collapse:collapse"><tr>
+            <td style="padding-right:10px;width:76px;vertical-align:middle">
+              <img src="https://cdn.imweb.me/upload/S2017031458c7abc782f2d/4df5f3608cf4e.jpg" width="68" height="68" style="border:3px solid #e3bd61;border-radius:50%;object-fit:cover;display:block" loading="lazy" alt="김유성 강사">
+            </td>
+            <td style="vertical-align:middle">
+              <div style="color:#ffe39a;font-size:11px;font-weight:bold;line-height:1.35">AI콘텐츠마케팅연구소</div>
+              <div style="color:#fff;font-size:20px;font-weight:bold;line-height:1.25">유쌤클래스</div>
+              <div style="margin-top:5px;padding-top:5px;border-top:1px solid #7184a9;color:#fff;font-size:13px;line-height:1.45"><b>대표 · 강사 김유성</b><br><span style="color:#d9e0ed;font-size:11px">Kim Yu Seong</span></div>
+            </td>
+          </tr></table>
+        </div>
+
+        <div style="padding:9px 11px 3px">
+          <div style="padding:8px 9px;background:#f3f6fb;border-left:4px solid #d3ad52;font-size:11px;line-height:1.55">
+            <b style="color:#102653;font-size:13px">교육분야</b><br>
+            AI인공지능 · 콘텐츠제작 · 온라인마케팅 · 미디어 리터러시 · 퍼스널브랜딩 · 책출판 · 미디어창작 · 브랜드컨설팅
+          </div>
+        </div>
+
+        <div style="padding:3px 11px">
+          <div style="padding:8px 9px;background:#f3f6fb;border-left:4px solid #4771a9;font-size:11px;line-height:1.55">
+            <b style="color:#102653;font-size:13px">교육대상</b><br>
+            정부·지자체·공공기관 임직원 · 공무원 · 교사 · 청소년 · 중소기업 임직원 · 신입사원 · 취업준비생 · 1인기업인
+          </div>
+        </div>
+
+        <div style="padding:6px 12px;font-size:11px;line-height:1.7;overflow-wrap:anywhere">
+          <b style="color:#102653;font-size:13px">강의 및 협업 문의</b><br>
+          <a href="tel:01027819669" style="color:#17213a;text-decoration:none">010-2781-9669</a> ·
+          <a href="tel:050713119669" style="color:#17213a;text-decoration:none">0507-1311-9669</a><br>
+          <a href="mailto:kyseong3@naver.com" style="color:#17213a;text-decoration:none">kyseong3@naver.com</a><br>
+          <a href="https://www.yussamclass.com" style="color:#876319;text-decoration:none" rel="noreferrer noopener" target="_blank">www.yussamclass.com</a>
+        </div>
+
+        <div style="padding:3px 12px 13px">
+          <div style="margin-bottom:7px;color:#102653;font-size:12px;font-weight:bold">SNS 채널</div>
+          <div style="display:flex;flex-wrap:wrap;gap:5px;align-items:center">
+            <a href="https://www.yussamclass.com" rel="noreferrer noopener" target="_blank"><img src="https://cdn.imweb.me/upload/S2017031458c7abc782f2d/db109298c1c0e.png" width="24" height="24" loading="lazy" alt="유쌤클래스"></a>
+            <a href="https://blog.naver.com/mindlemedia" rel="noreferrer noopener" target="_blank"><img src="https://cdn.imweb.me/upload/S2017031458c7abc782f2d/e38ab291f5b3d.png" width="24" height="24" loading="lazy" alt="네이버 블로그"></a>
+            <a href="https://www.youtube.com/c/kyseong3" rel="noreferrer noopener" target="_blank"><img src="https://cdn.imweb.me/upload/S2017031458c7abc782f2d/7716e23aacee7.png" width="24" height="24" loading="lazy" alt="유튜브"></a>
+            <a href="https://www.instagram.com/yussamclass" rel="noreferrer noopener" target="_blank"><img src="https://cdn.imweb.me/upload/S2017031458c7abc782f2d/39127e5032943.png" width="24" height="24" loading="lazy" alt="인스타그램"></a>
+            <a href="https://www.facebook.com/dandelionmedia1004" rel="noreferrer noopener" target="_blank"><img src="https://cdn.imweb.me/upload/S2017031458c7abc782f2d/47d6af62e63d6.png" width="24" height="24" loading="lazy" alt="페이스북"></a>
+            <a href="https://www.threads.com/@yussamclass" rel="noreferrer noopener" target="_blank"><img src="https://cdn.imweb.me/upload/S2017031458c7abc782f2d/51b3b1e1118b8.png" width="24" height="24" loading="lazy" alt="스레드"></a>
+            <a href="https://open.kakao.com/o/gLAE28ui" rel="noreferrer noopener" target="_blank"><img src="https://cdn.imweb.me/upload/S2017031458c7abc782f2d/ee583ebc6add0.png" width="24" height="24" loading="lazy" alt="카카오 오픈채팅"></a>
+          </div>
+        </div>
+      </div>
+      
+    </aside>
+    <main id="main">
+      <header class="hero"><span class="eyebrow"><i></i> 충주 남성유치원 교원 연수 · 2시간 실습</span><h1>생성형 AI 기반 유아 교육과정 실행력 강화</h1><p>문서 · 이미지 · 영상 · 노래 · 동화구연 PPT를 현장에서 바로 만들어보세요. 각 카드의 ‘한번에 복사’ 버튼을 누르면 프롬프트 전체가 복사됩니다.</p><div class="hero-meta"><span>📅 2026년 9월 8일</span><span>🏫 남성유치원</span><span>👨‍🏫 김유성 강사</span></div></header>
+      <div class="notice"><div class="notice-icon">✓</div><div><strong>AI 결과물은 교사가 최종 확인합니다.</strong><p>유아 개인정보는 입력하지 않고, 날짜·요일·안전·보건·누리과정 내용은 공식 자료와 기관 지침으로 다시 확인해 주세요.</p></div></div>
+      <div id="prompt-root"></div>
+      <section class="chapter" id="chapter-6"><div class="chapter-head"><div class="chapter-no">6</div><div><h2>수업 마무리용 검토 체크리스트</h2><p class="chapter-intro">교육 현장에 내보내기 전, 결과물마다 확인하세요.</p></div></div><div class="checks" id="checks"></div><h3>공식 자료 확인 경로</h3><div class="sources"><a class="source" href="https://www.nccw.educare.or.kr/web/nced/proc/revi/contPageDetail.do?cont_no=A7EEB3D1EDE911EB8EA7D20DE2351542" target="_blank" rel="noopener">교육부 · 2019 개정 누리과정 ↗</a><a class="source" href="https://i-nuri.go.kr/teacher/module/dataSearch/index.do?data_type=normal&manage_idx=25&menu_idx=19" target="_blank" rel="noopener">i-누리 · 놀이실행자료 ↗</a><a class="source" href="https://www.kdca.go.kr" target="_blank" rel="noopener">질병관리청 ↗</a><a class="source" href="https://www.nfa.go.kr" target="_blank" rel="noopener">소방청 ↗</a></div></section>
+      <footer><div class="footer-grid"><div><strong>AI콘텐츠마케팅연구소 유쌤클래스 김유성 강사</strong><p>현장의 전문적 판단을 더 빠르고 분명하게 실행하는 AI 실무 교육</p></div><div class="footer-links"><a href="https://www.yussamclass.com" target="_blank" rel="noopener">www.yussamclass.com</a><br><a href="tel:01027819669">010-2781-9669</a></div></div></footer>
+    </main>
+  </div>
+  <button class="top" type="button" aria-label="페이지 맨 위로 이동">↑<br>맨위</button>
+  <script>
+  const chapters = [
+    {id:0,title:'좋은 프롬프트로 시작하기',intro:'역할·상황·요청·조건·출력 형식·검토 기준까지 알려주면 결과가 달라집니다.',items:[
+      {title:'첫 실습: 좋은 프롬프트 입력하기',icon:'✨',prompt:`너는 15년차 유치원 교사이자 유아 창작동화 작가야.
+
+[상황·대상]
+- 대상: 만 4세 유아 20명
+- 상황: 비 오는 날 놀이터에서 웅덩이를 발견했고, 아이들이 빗방울 소리와 물결에 큰 관심을 보였어.
+
+[요청]
+유아의 관심에서 출발하는 5분 분량의 창작동화를 써줘.
+
+[조건]
+- 주인공은 겁이 조금 많지만 호기심 많은 아기 개구리 1명
+- 문제 상황 → 시도 → 도움 → 해결의 흐름
+- 만 4세가 이해할 수 있는 짧고 쉬운 문장
+- 무서운 장면, 위험한 행동의 모방을 유도하는 표현은 제외
+- “비 오는 날에도 안전하게 탐색할 수 있다”는 메시지를 자연스럽게 포함
+- 교사가 읽어줄 때 사용할 목소리·표정 지시를 괄호로 5회 이내 표시
+
+[출력 형식]
+1. 제목 3가지
+2. 등장인물 소개
+3. 동화 본문
+4. 동화 후 이야기 나눌 열린 질문 5개
+5. 연계 놀이 2개
+
+[검토]
+연령에 맞지 않거나 안전상 오해가 생길 표현이 없는지 마지막에 스스로 점검해줘.`,guide:'대상 연령, 인원, 유아의 실제 관심, 동화 소재, 원하는 분량을 우리 반 상황에 맞게 적으세요. 예: 만 5세 18명 / 텃밭의 달팽이에 관심 / 6분 분량.',tip:'대괄호 안의 정보만 바꾸어도 같은 구조로 다른 동화·문서·활동을 만들 수 있습니다.'}
+    ]},
+    {id:1,title:'문서 만들기',intro:'기본 요청 → 실무 완성형 요청 → 교사 검토 순서로 진행합니다.',items:[
+      {title:'가정통신문 실무 완성형',icon:'💌',basic:'5월 어린이날 행사 안내 가정통신문을 학부모가 이해하기 쉽게 써줘. 일시, 장소, 준비물을 포함해줘.',prompt:`너는 대한민국 유치원에서 10년 이상 근무한 베테랑 교사이자 학부모 소통 담당자야.
+
+[작성 목적]
+학부모에게 아래 행사 내용을 정확하고 따뜻하게 안내하고, 필요한 준비와 회신을 받기 위한 가정통신문을 작성해줘.
+
+[행사 정보]
+- 유치원명: 남성유치원
+- 주제: [어린이날 행사 / 현장체험학습 / 물놀이 / 상담주간 등]
+- 대상: [만 3세 / 만 4세 / 만 5세 / 전 연령]
+- 일시: [연도-월-일(요일) 00:00~00:00]
+- 장소: [장소]
+- 준비물: [준비물]
+- 복장: [복장]
+- 비용 및 납부 방법: [없음 또는 구체적 내용]
+- 이동 방법: [해당 시 입력]
+- 우천·미세먼지 등 대체 계획: [내용]
+- 회신 마감: [날짜]
+- 문의: [담임교사/대표번호 등]
+
+[작성 조건]
+- 실제 유치원에서 사용하는 자연스럽고 정중한 문체
+- 행사 목적과 교육적 의미를 2문장 이내로 설명
+- 핵심 일정·장소·준비물은 표로 정리
+- 유아 안전, 알레르기·건강 관련 사전 전달, 귀가 방법 변경 절차 등 해당되는 유의사항을 포함
+- 제공하지 않은 사실, 연락처, 비용, 규정을 임의로 만들지 말고 [확인 필요]로 표시
+- ‘학생’ 대신 문맥에 맞게 ‘유아’ 또는 ‘원아’ 사용
+- 맞춤법과 날짜·요일의 일치 여부를 점검
+- A4 1장 이내
+
+[출력 형식]
+1. 제목 3가지
+2. 최종 가정통신문
+3. 참석/불참 및 원아명 회신란
+4. 문자메시지용 200자 이내 요약
+5. 교사가 발송 전에 확인할 항목 5개
+
+마지막에 입력 정보 중 빠진 항목과 사실 확인이 필요한 부분을 별도로 알려줘.`,guide:'주제, 대상 연령, 일시, 장소, 준비물, 복장, 비용, 이동 방법, 대체 계획, 회신 마감일, 문의처를 실제 행사 정보로 적으세요. 해당 없는 항목은 “없음”이라고 입력하세요.',tip:'최종 발송 전에 맞춤법과 띄어쓰기를 확인합니다.'},
+      {title:'유아의 흥미에서 출발하는 놀이 지원안',icon:'🌦️',prompt:`너는 「2019 개정 누리과정」을 깊이 이해하는 15년차 유치원 교사이자 유아교육 컨설턴트야.
+
+[학급 상황]
+- 기관: 남성유치원
+- 연령·인원: 만 [4]세 [20]명
+- 시기·환경: [7월 장마철 / 실내외 사용 가능 공간]
+- 관찰 기록: [비 오는 날 창밖을 오래 바라봄 / 물웅덩이를 밟음 / 우산을 부딪혀 소리를 탐색함]
+- 개별 지원이 필요한 점: [언어표현이 어려운 유아 / 감각에 민감한 유아 / 이동 지원 등, 실명 제외]
+- 사용 가능한 자료: [투명 우산, 물받이, 다양한 용기, 방수 앞치마 등]
+
+[요청]
+위 관찰에서 출발한 놀이중심 활동계획안을 만들어줘. 교사가 정답을 가르치는 활동이 아니라 유아가 놀이를 선택·변형·확장하도록 지원하는 관점으로 작성해줘.
+
+[필수 구성]
+1. 놀이명과 놀이의 출발점
+2. 관찰된 유아의 흥미와 예상되는 배움
+3. 관련 누리과정 영역과 내용: 신체운동·건강, 의사소통, 사회관계, 예술경험, 자연탐구 중 실제 관련성이 높은 것만 선택
+4. 교사 지원: 공간·시간 / 자료 / 관찰 / 상호작용 / 개별화
+5. 예상 놀이 흐름: 시작 → 탐색 → 변형·확장. 단, 유아 반응에 따라 바뀔 수 있음을 표시
+6. 열린 발문 10개: 왜·어떻게·만약에 질문 중심, 정답 유도 질문 제외
+7. 확장 아이디어 5개: 실내 3개, 실외 2개
+8. 안전·위생 유의사항 5개
+9. 가정 연계 2개
+10. 놀이 후 교사 기록 문장 예시 3개
+
+[검토 기준]
+- 만 [4]세가 실제로 할 수 있는 수준인지 점검
+- 누리과정 문구를 확신할 수 없으면 임의로 인용하지 말고 [공식 해설서 확인]으로 표시
+- 유아의 행동을 평가·낙인찍는 표현은 사용하지 않기
+- 결과를 표 1개와 짧은 설명으로 정리해 바로 수정·제출할 수 있게 작성`,guide:'연령·인원, 시기와 사용 공간, 최근 관찰한 유아의 말·행동, 개별 지원 필요, 사용할 수 있는 자료를 적으세요. 유아 실명은 쓰지 마세요.',tip:'누리과정 5개 영역을 억지로 모두 연결하기보다 관찰된 놀이와 실제 관련성이 높은 영역을 선택하세요.'},
+      {title:'주간 놀이·교육계획안',icon:'🗓️',prompt:`너는 남성유치원 만 [5]세반 담임교사야. 「2019 개정 누리과정」과 유아·놀이 중심 운영 원리에 따라 다음 주 계획안을 작성해줘.
+
+[기본 정보]
+- 기간: [2026-00-00(월)~2026-00-00(금)]
+- 생활 주제 또는 최근 관심: [물놀이와 여름]
+- 학급 인원 및 특성: [인원, 최근 관찰 내용, 개별 지원 필요 사항—실명 제외]
+- 고정 일과: [등원 / 자유놀이 / 모임 / 바깥놀이 / 점심 / 휴식 / 오후 놀이 / 귀가]
+- 기관 행사·급식·특이사항: [입력]
+
+[작성 원칙]
+- 시간표를 지나치게 분절하지 말고 충분한 놀이 시간이 확보되도록 구성
+- 요일별 계획은 유아의 반응에 따라 조정 가능한 ‘예상안’으로 제시
+- 누리과정 5개 영역이 한 주 전체에서 균형 있게 경험되도록 하되 하루 한 영역으로 기계적으로 제한하지 않기
+- 매일 활동 목표 대신 ‘교사가 관찰하고 지원할 초점’을 1문장으로 제시
+- 실외활동이 어려울 때의 대체 놀이 포함
+- 안전·건강, 정서적 안정, 다양성과 접근성을 반영
+
+[출력 형식]
+1. 이번 주 기대되는 배움 3가지
+2. 요일 / 일과 / 예상 놀이·활동 / 관련 영역 / 교사 지원 / 준비·안전 항목의 표
+3. 가정 연계 안내 3문장
+4. 주간 평가·다음 주 반영용 질문 5개
+5. 입력값 중 확인이 필요한 일정 표시`,guide:'반 연령, 운영 기간, 최근 관심, 학급 인원과 특성, 실제 일과, 예정된 행사·급식·특이사항을 적으세요. 날짜와 요일은 달력으로 확인하세요.',tip:'날짜와 요일을 함께 쓸 때는 반드시 달력과 대조합니다.'},
+      {title:'그림 중심 활동지 설계',icon:'🖍️',prompt:`너는 유아의 발달과 접근성을 고려하는 유아교육 자료 디자이너야.
+
+[연계 놀이]
+- 놀이명: [빗물 웅덩이 놀이]
+- 대상: 만 [4]세
+- 활동지 목적: [관찰 회상 / 수 개념 / 표현 / 가정 대화 등]
+- 인쇄 조건: A4 세로, 흑백 또는 컬러 [선택]
+
+[요청]
+글자를 아직 읽기 어려운 유아도 참여할 수 있는 그림 중심 활동지 1장을 설계해줘.
+
+[구성]
+1. 유아가 좋아할 짧은 제목
+2. 교사가 읽어줄 안내 1~2문장
+3. 활동 1: 그림 보고 선택·동그라미
+4. 활동 2: 선 긋기·색칠하기
+5. 활동 3: 관찰한 것을 자유롭게 그릴 큰 빈칸
+6. 하단: 가정에서 나눌 질문 1개(존댓말)
+7. 쉽게 하기 1개 / 더 해보기 1개
+
+[디자인·안전 조건]
+- 한 페이지에 과제가 너무 많지 않게 여백을 충분히 확보
+- 선은 굵고 형태는 단순하게, 글자는 큰 고딕체 느낌
+- 정답 경쟁이나 비교를 유도하지 않기
+- 각 요소 위치를 [그림 설명: 상단 오른쪽에 …] 형식으로 구체적으로 설명
+- 이미지 생성 AI가 글자를 틀릴 수 있으므로 ‘글자 없는 활동지 배경용 프롬프트’와 ‘교사가 편집 도구에서 넣을 정확한 문구’를 분리
+
+[출력]
+① 활동지 설계도 ② 삽입 문구 모음 ③ 글자 없는 배경 이미지 생성 프롬프트 ④ 인쇄 전 확인표`,guide:'연계 놀이명, 대상 연령, 활동지 목적, 컬러·흑백 여부를 선택하세요. 예: 나뭇잎 탐색 / 만 4세 / 모양 비교와 관찰 회상 / 흑백.',tip:'활동지 이미지는 글자 없이 생성한 뒤 한글 문구를 Canva·PowerPoint 등에서 직접 얹으면 오탈자를 크게 줄일 수 있습니다.'}
+    ]},
+    {id:2,title:'이미지 만들기',intro:'배경·일러스트 생성과 정확한 한글 문구 편집을 나누면 안정적입니다.',items:[
+      {title:'4장 손 씻기 카드뉴스',icon:'🫧',prompt:`너는 유아 대상 보건교육 콘텐츠를 설계하는 유치원 카드뉴스 디자이너야.
+
+[목적과 대상]
+- 대상: 남성유치원 만 3~5세 유아와 학부모
+- 주제: 올바른 손 씻기
+- 사용처: 교실 화면, 가정 안내, SNS
+- 카드 수·비율: 정사각형 1:1, 총 4장
+
+[내용 구성]
+1장 표지: “뽀득뽀득 깨끗한 손!”
+2장 언제 씻나요?: 놀이 후, 화장실 사용 후, 먹기 전
+3장 어떻게 씻나요?: 흐르는 물과 비누로 손바닥·손등·손가락 사이·엄지·손톱 밑을 빠뜨리지 않기
+4장 마무리: 깨끗한 수건 또는 손 건조 방법 + “우리 함께 실천해요”
+
+[디자인]
+- 파스텔 아이보리 배경, 딥 그린·시안 포인트
+- 실제 유아 사진이 아닌 단순하고 따뜻한 일러스트 캐릭터
+- 한 카드에 핵심 문장 1개와 짧은 보조 문구만 사용
+- 중요한 행동이 그림만 보아도 이해되도록 손동작을 명확히 표현
+- 카드 하단에 1/4, 2/4, 3/4, 4/4 표기
+- 기관 로고, 임의 연락처, QR코드, 워터마크는 넣지 않기
+- 가장자리 10%는 안전 여백으로 비우기
+
+[작업 순서]
+먼저 4장 전체의 문구와 장면 구성을 제시해줘. 내가 승인하면 1번 카드부터 한 장씩 생성해줘. 각 카드 생성 전, 화면에 들어갈 정확한 한국어 문구를 먼저 보여줘.
+
+[사실 확인]
+보건 정보는 최신 질병관리청 등 공식 안내와 대조할 수 있도록 확인이 필요한 표현을 표시해줘. 출처를 확인하지 못한 수치나 시간을 임의로 만들지 마.`,guide:'대상 연령, 카드뉴스 주제, 사용할 곳, 카드 수와 비율, 카드별 핵심 문구를 적으세요. 보건 내용은 사용 전에 최신 공식 자료로 확인하세요.',tip:'문구가 깨지면 “모든 글자 제거, 일러스트와 빈 제목 영역만 유지”라고 수정 요청한 뒤 글자는 편집 도구에서 입력합니다.'},
+      {title:'학부모용 물놀이 안전 카드뉴스',icon:'🛟',prompt:`너는 유치원 학부모용 안전 홍보물을 만드는 전문 디자이너야.
+
+[제작물]
+- 주제: 우리 아이 안전한 물놀이
+- 대상: 남성유치원 학부모
+- 형식: 1:1 정사각형 4장
+
+[카드 구성]
+1장: 표지—“우리 아이 안전한 물놀이”
+2장: 물놀이 전—보호자 확인, 건강 상태 살피기, 준비운동, 구명조끼 등
+3장: 물놀이 중—보호자가 가까이에서 지속 관찰, 정해진 구역 이용, 위험한 장난 금지
+4장: 위급 상황—즉시 주변에 도움 요청, 119 신고, 구조자의 안전 확보, 교육받은 응급처치 시행
+
+[디자인 조건]
+- 밝고 따뜻한 여름 파스텔 색감
+- 유아와 보호자는 단순한 일러스트 캐릭터
+- 위험 행동에는 금지 표시, 바른 행동에는 체크 표시
+- 한 카드 문구는 제목 포함 35자 안팎, 큰 글자와 높은 대비
+- 하단 카드 번호 표시, 임의 로고·연락처·QR코드 금지
+
+[안전 조건]
+응급 대응 문구는 단정적으로 지어내지 말고 소방청·질병관리청 등 공식 지침 확인이 필요한 부분을 표시해줘. 먼저 카드별 문구·그림 콘티를 작성하고, 승인 후 1장씩 순차 생성해줘.`,guide:'배포 대상, 배포 시기, 실제 물놀이 장소·운영 방식, 기관에서 강조할 준비물과 안전수칙을 적으세요. 확실하지 않은 응급 정보는 공식 지침 확인을 요청하세요.',tip:'이미지 완성 후에도 기관 안전 담당자와 최신 공식 지침을 기준으로 최종 검토합니다.'},
+      {title:'봄 나들이 행사 포스터 실무 완성형',icon:'🌸',basic:'유치원 봄 소풍 행사 포스터를 밝고 귀여운 스타일로 그려줘. 노란색 버스와 아이들이 있는 모습으로 해줘.',prompt:`너는 대한민국 유치원 행사 홍보물을 만드는 전문 포스터 디자이너야.
+
+[정확히 넣을 문구]
+- 제목: 남성유치원 2026년 봄 나들이
+- 장소: [용두공원]
+- 날짜: [2026년 4월 15일(수)]
+- 준비물: 가방, 물통, 간식, 편안한 신발
+- 추가 안내: [집결 시간 / 우천 시 계획 / 문의]
+
+[시각 콘셉트]
+- 3:4 세로형 포스터
+- 따뜻한 봄 햇살, 연두색 잎, 벚꽃, 노란색 통학버스
+- 유아들은 실제 사진이 아닌 다양하고 친근한 일러스트 캐릭터
+- 밝은 아이보리 바탕, 딥 그린 제목, 시안·골드 포인트
+- 제목은 상단, 핵심 정보는 하단 카드 영역에 크게 배치
+- 모바일에서도 읽히도록 짧은 문구와 높은 대비
+- 가장자리 8~10% 안전 여백
+- 임의 기관 로고, 연락처, QR코드, 워터마크 금지
+
+[출력 순서]
+1. 문구의 맞춤법과 날짜·요일 일치 여부를 먼저 점검
+2. 포스터 구성안을 설명
+3. 글자 포함 버전을 생성
+4. 같은 디자인의 ‘글자 없는 배경 버전’도 생성할 수 있는 별도 프롬프트 제공
+
+한국어 글자가 부정확하면 그림과 빈 정보 영역만 유지하고 모든 글자를 제거해줘.`,guide:'행사명, 날짜, 시간, 장소, 대상, 준비물, 복장, 우천 시 안내를 실제 값으로 수정하세요. 연락처나 로고는 제공할 때만 넣도록 지시하세요.',tip:'예시 날짜인 2026년 4월 15일은 수요일입니다. 실제 행사 일정으로 바꿀 때 날짜·요일을 함께 확인합니다.'},
+      {title:'어린이날 행사 포스터',icon:'🎈',prompt:`유치원 행사 포스터 전문 디자이너로서 3:4 세로형 “즐거운 어린이날 축제” 포스터를 만들어줘.
+
+[행사 정보]
+- 기관: 남성유치원
+- 일시: [입력]
+- 장소: [입력]
+- 준비·안내: [입력]
+
+[디자인]
+따뜻한 동화책 일러스트, 밝은 아이보리 배경, 풍선·비눗방울·무지개·꽃·선물상자·햇살. 다양한 유아 캐릭터가 안전하게 놀이하는 장면. 제목은 상단에 매우 크게, 일정·장소는 하단의 단정한 카드에 배치. 모바일 가독성, 높은 명암 대비, 10% 안전 여백. 임의 정보·로고·QR코드·워터마크 금지.
+
+먼저 정확한 삽입 문구를 보여주고, 내가 확인한 뒤 이미지를 생성해줘. 같은 장면의 글자 없는 배경 프롬프트도 함께 제공해줘.`,guide:'행사 제목, 날짜·시간, 장소, 대상, 핵심 프로그램, 준비물을 적으세요. 아직 정하지 않은 정보는 “추후 안내”로 표시하도록 요청하세요.'}
+    ]},
+    {id:3,title:'영상 만들기',intro:'캐릭터 설정과 6장면 스토리보드를 먼저 완성하면 장면 일관성이 좋아집니다.',items:[
+      {title:'30초 「곰돌이, 엄마를 찾아서」 동화영상',icon:'🎬',prompt:`너는 유아 발달과 영상 연출을 이해하는 동화영상 기획자야.
+
+[기본 설정]
+- 제목: 곰돌이, 엄마를 찾아서
+- 대상: 만 4~5세
+- 길이·비율: 약 30초, 16:9
+- 핵심 이야기: 숲속 가족 축제에서 잠시 엄마가 보이지 않자 아기 곰이 안전한 장소에서 믿을 수 있는 어른에게 도움을 요청하고 다시 만나는 이야기
+- 교훈: 가족의 소중함, 길을 잃었을 때 혼자 돌아다니지 않고 도움 요청하기
+- 분위기: 따뜻하고 밝은 3D 애니메이션, 위협적 장면 없음
+
+[1. 로그라인]
+한 문장 로그라인과 유아 눈높이의 교육 메시지를 작성해줘.
+
+[2. 캐릭터 바이블]
+아기 곰과 엄마 곰, 총 2명의 외형·색상·의상·소품·성격을 고정해줘. 먼저 캐릭터별 1:1 정면 바스트샷 제작용 프롬프트를 한국어와 영어로 작성해줘. 모든 장면에서 색상과 의상이 바뀌지 않도록 ‘고정 특징’을 별도 목록으로 정리해줘.
+
+[3. 6장면 스토리보드]
+장면당 약 4~5초로 구성하고, 각 장면을 아래 순서의 문장형 블록으로 작성해줘.
+① 장면 번호와 시간 ② 화면·행동 설명 ③ 카메라 구도와 움직임 ④ 장면 이미지 프롬프트(한국어) ⑤ Scene image prompt(English) ⑥ 영상화 프롬프트(움직임·카메라·표정, 한국어/영어) ⑦ 1~2문장의 내레이션 ⑧ 효과음·배경음
+
+[연속성 조건]
+- 모든 이미지 16:9, 동일한 캐릭터 고정 특징과 색상 팔레트 유지
+- 아기 곰은 위험한 곳을 혼자 헤매지 않고 안내 표지 옆에서 교사 곰에게 도움 요청
+- 장면마다 새 인물·의상·배경 요소를 임의로 추가하지 않기
+- 내레이션 전체는 약 70~90자 수준의 짧고 쉬운 한국어
+- 입 모양이 복잡한 대사 장면보다 내레이션 중심
+- 이미지 안에는 글자·자막·로고·워터마크를 넣지 않기
+
+[마지막 묶음 출력]
+1. 6장면 내레이션 전체 복사용 블록
+2. 6장면 영어 이미지 프롬프트 전체 복사용 블록
+3. 6장면 영어 영상화 프롬프트 전체 복사용 블록
+4. 편집 순서와 장면별 권장 길이
+5. 유아에게 보여주기 전 교사 안전·정서 검토표`,guide:'동화 제목·주제, 대상 연령, 영상 길이, 핵심 사건, 교훈, 등장인물, 원하는 분위기를 정하세요. 예: 만 4~5세 / 30초 / 도움 요청과 가족의 소중함.',tip:'주요 인물의 고정 외형을 함께 정해야 장면 일관성이 좋아집니다.'},
+      {title:'캐릭터시트 만들기 프롬프트',icon:'🧍',prompt:`# [IMPORTANT] 6-Panel 3D Animation Character Reference Sheet Based on the Attached Photo
+
+The attached photo is the **master reference** for the character.
+
+Create a **6-panel character reference sheet in a 16:9 aspect ratio**, while preserving the subject’s recognizable facial identity, hairstyle, clothing design, proportions, and overall personality from the reference photo.
+
+The final result must be rendered as a **warm, bright, friendly 3D animated character**, suitable for a family-friendly animated film.
+
+---
+
+## 1. Core Character Elements to Preserve
+
+### Subject Identity
+
+Preserve the recognizable characteristics of the person in the attached reference photo:
+
+- Facial structure
+- Face shape
+- Eyes and eyebrows
+- Nose shape
+- Mouth shape
+- Jawline
+- Ear shape
+- Hairstyle and hair direction
+- Clothing design and colors
+- Overall body proportions
+- Calm and friendly personality
+
+The character should clearly feel like the **same person across all six panels**.
+
+### Expression
+
+Use a **gentle, subtle smile**.
+
+The character should feel:
+
+- Friendly
+- Warm
+- Approachable
+- Calm
+- Intelligent
+- Positive
+
+Avoid exaggerated cartoon expressions.
+
+---
+
+## 2. Visual Style
+
+Transform the real person into a **high-quality 3D animated character**.
+
+Style characteristics:
+
+- Warm and bright 3D animation
+- Family-friendly animated movie aesthetic
+- Soft but detailed 3D character modeling
+- Natural facial proportions
+- Slightly stylized but recognizable facial features
+- Expressive but realistic-looking eyes
+- Soft natural skin shading
+- Detailed individual hair strands
+- Natural fabric textures on clothing
+- Clean and polished character modeling
+- High-end cinematic 3D animation quality
+
+The character should look professionally designed for a modern animated film.
+
+Avoid:
+
+- Photorealistic human skin
+- Plastic or wax-like skin
+- Excessively glossy materials
+- Creepy facial expressions
+- Horror elements
+- Dark or threatening atmosphere
+- Aggressive poses
+- Distorted anatomy
+- Overly exaggerated cartoon proportions
+
+**No threatening scenes, no violence, no horror, no dark mood.**
+
+---
+
+## 3. Lighting and Background
+
+Use:
+
+- Bright studio lighting
+- Soft warm key light
+- Gentle fill light
+- Subtle rim lighting
+- Clean shadows
+- Cheerful and comfortable atmosphere
+
+Background:
+
+- Warm light cream
+- Soft ivory
+- Very light beige
+- Subtle warm neutral gradient
+
+Keep the background simple so the character remains the main focus.
+
+---
+
+## 4. Layout Structure
+
+Create a **modified 2-column × 3-row character reference grid**.
+
+The overall canvas must be **16:9**.
+
+The middle row should contain two **vertically taller panels** for full-body character views.
+
+### Grid Structure
+
+TOP ROW
+[ Top Left ] | [ Top Right ]
+
+MIDDLE ROW — Taller vertical panels
+[ Middle Left ] | [ Middle Right ]
+
+BOTTOM ROW
+[ Bottom Left ] | [ Bottom Right ]
+
+Maintain equal visual spacing and a professional character-design-sheet layout.
+
+---
+
+## 5. Specific Panel Assignments
+
+### [Top Left]
+
+**Front-facing facial close-up**
+
+- Direct frontal view
+- Gentle subtle smile
+- Clearly show facial features
+- Preserve hairstyle accurately
+- Show detailed eyes, eyebrows, nose, lips, and face shape
+- Warm 3D animated character rendering
+
+---
+
+### [Top Right]
+
+**45-degree semi-profile facial close-up**
+
+- Head turned approximately 45 degrees to the character’s right
+- Preserve the exact hairstyle and facial proportions
+- Show cheekbone, nose shape, jawline, and ear naturally
+- Same gentle facial expression
+
+---
+
+### [Middle Left — Tall Panel]
+
+**Full-body front view**
+
+- Standing straight
+- Neutral relaxed posture
+- Arms naturally positioned
+- Entire body visible from head to feet
+- Preserve clothing design from the reference photo
+- Clearly show clothing shapes, folds, seams, and materials
+- Friendly animated character proportions
+
+---
+
+### [Middle Right — Tall Panel]
+
+**Full-body back view**
+
+- Character standing straight
+- Same posture and body proportions as the front view
+- Full body visible from head to feet
+- Clearly show the back of the hairstyle
+- Show rear clothing details, seams, folds, and silhouette
+
+---
+
+### [Bottom Left]
+
+**90-degree full-profile facial close-up**
+
+- Exact side profile
+- Clearly show:
+  - Forehead
+  - Nose bridge
+  - Lips
+  - Chin
+  - Jawline
+  - Ear shape
+  - Hairstyle silhouette
+
+Maintain the same friendly expression and character identity.
+
+---
+
+### [Bottom Right]
+
+**Opposite 45-degree semi-profile facial close-up**
+
+- Head turned approximately 45 degrees to the character’s left
+- Match the same identity and proportions
+- Clearly show facial volume, cheekbone structure, hairstyle, and jawline
+
+---
+
+## 6. Character Consistency — VERY IMPORTANT
+
+All six panels must depict **exactly the same character**.
+
+Freeze and maintain:
+
+- Same facial identity
+- Same hairstyle
+- Same hair color
+- Same skin tone
+- Same clothing
+- Same clothing colors
+- Same body proportions
+- Same age appearance
+- Same overall 3D animation style
+
+Do not redesign or reinterpret the character between panels.
+
+The front, side, back, and 45-degree views should look like professional reference images of **one single 3D character model rotated to different angles**.
+
+---
+
+## 7. Final Rendering Style
+
+Final output:
+
+**Warm and bright premium 3D animation character reference sheet, family-friendly cinematic animation style, gentle and positive mood, highly detailed 3D modeling, natural fabric textures, soft skin shading, detailed hair strands, professional studio lighting, clean ivory background, consistent character identity across all six views, polished animated-film production quality.**
+
+Aspect ratio: **16:9**
+
+Resolution: **Ultra-high resolution**
+
+Mood:
+
+**Warm, bright, friendly, safe, optimistic, peaceful.**
+
+Absolutely avoid:
+
+**dark scenes, threatening atmosphere, violence, horror, scary expressions, aggressive poses, creepy realism, grotesque features, distorted faces, deformed hands or limbs, inconsistent character identity, excessive gloss, plastic-looking skin, photorealistic raw-photo style.**`,guide:'참고할 인물 사진을 먼저 첨부한 뒤 이 프롬프트를 그대로 사용하세요. 6개 패널 모두 같은 얼굴·헤어스타일·의상·체형을 유지하는 것이 핵심입니다.',tip:'캐릭터시트가 완성되면 이후 이미지·영상 장면 제작 시 이 시트를 캐릭터 기준 이미지로 계속 사용하면 인물 일관성을 높일 수 있습니다.'},
+      {title:'모든 영상 장면에 붙이는 공통 조건',icon:'🛡️',prompt:`등장인물의 얼굴·털색·의상·신체 비율을 바꾸지 말 것. 손발이나 얼굴의 왜곡, 인물 복제, 갑작스러운 배경 전환, 깜빡임, 물체 관통, 카메라 흔들림, 과도한 속도, 공포스러운 표정, 위험 행동, 화면 속 글자·자막·로고·워터마크를 제외. 부드럽고 안정적인 움직임, 유아가 편안하게 볼 수 있는 밝은 조명과 따뜻한 색감.`,guide:'별도 입력 없음: 각 장면의 이미지·영상 생성 프롬프트 맨 끝에 그대로 붙여 넣으세요. 작품에 맞지 않는 제외 조건만 필요한 범위에서 조정하세요.'}
+    ]},
+    {id:4,title:'노래 만들기',intro:'가사 만들기와 음악 스타일 지시문을 분리하면 수정이 쉽습니다.',items:[
+      {title:'신나는 우리 유치원 동요',icon:'🎵',prompt:`너는 만 3~5세가 쉽게 따라 부를 수 있는 한국 동요 작사가이자 유아음악 교육가야.
+
+[노래 정보]
+- 유치원명: 남성유치원
+- 사용 장면: 아침 등원, 체육대회, 발표회
+- 핵심 이미지: 친구와 인사하기, 웃으며 뛰어놀기, 서로 돕기, 매일 자라기
+- 분위기: 밝고 씩씩하며 따뜻함
+- 길이: 1분 30초~2분
+
+[가사 조건]
+- 만 3~5세가 발음하기 쉬운 짧은 문장
+- 1절 → 후렴 → 2절 → 후렴 → 짧은 마무리
+- 후렴에 “남성유치원”을 자연스럽게 2회 반복
+- 어려운 한자어, 경쟁·서열 표현, 과도한 영어 제외
+- 한 줄이 지나치게 길지 않게 작성
+- 손뼉 치기나 간단한 율동이 가능한 구절 2곳 표시
+- 기존 동요의 특정 가사나 멜로디를 모방하지 않는 독창적 표현
+
+[출력]
+1. 제목 5개
+2. 완성 가사
+3. 교사용 율동 아이디어 4개
+4. Suno Custom 모드의 Lyrics 칸에 넣을 가사
+5. Style of Music 칸에 넣을 한국어·영어 스타일 프롬프트
+6. 피해야 할 요소(Exclude Styles) 제안
+
+[음악 방향]
+경쾌한 한국 동요, 약 105~115 BPM, 밝은 피아노·글로켄슈필·어쿠스틱 기타·가벼운 드럼, 또렷한 리드 보컬과 따라 부르기 쉬운 합창형 후렴. 유아가 편안하게 들을 수 있는 음역과 단순한 리듬.`,guide:'사용할 장면, 노래 길이, 핵심 이미지 3~4개, 원하는 분위기와 빠르기를 적으세요. 유치원명 “남성유치원”은 그대로 사용하세요.',tip:'특정 가수나 기존 곡과 지나치게 비슷하지 않도록 “독창적인 멜로디”를 명시합니다.'},
+      {title:'입학식·졸업식용 따뜻한 원가',icon:'🎓',prompt:`너는 유치원 원가를 만드는 전문 작사가·작곡 기획자야.
+
+[기관·메시지]
+- 유치원명: 남성유치원
+- 핵심 가치 3가지: [사랑 / 우정 / 성장]
+- 상징 공간·자연물: [교정의 나무 / 햇살 / 꽃길 등]
+- 사용 장면: 입학식, 졸업식, 발표회
+- 길이: 약 2분
+
+[가사]
+- 1절은 처음 만난 설렘, 2절은 함께 성장한 기억
+- 후렴은 유아와 학부모가 함께 기억할 수 있도록 단순하고 반복적으로
+- 유치원명은 후렴에 자연스럽게 포함
+- 만 5세가 발음하기 쉬운 어휘, 한 줄 15음절 안팎
+- 꿈·사랑·우정·행복·성장의 메시지를 구체적인 장면으로 표현
+- 기존 학교 교가·동요·애니메이션 음악을 모방하지 않는 독창적 가사
+
+[음악 스타일]
+따뜻한 가족 애니메이션 엔딩곡을 연상시키는 보편적 감성, 한국 동요의 친근한 선율, 약 92~98 BPM. 부드러운 피아노, 글로켄슈필, 스트링, 어쿠스틱 기타. 맑고 편안한 합창형 후렴, 지나치게 웅장하거나 슬프지 않게.
+
+[출력]
+① 제목 5개 ② 완성 가사 ③ Suno Lyrics용 블록 ④ 한국어 스타일 프롬프트 ⑤ 영어 스타일 프롬프트 ⑥ Exclude Styles ⑦ 행사별 편집 아이디어`,guide:'핵심 가치 3가지, 남성유치원을 떠올리게 하는 공간·자연물, 사용할 행사, 노래 길이를 적으세요. 예: 사랑·우정·성장 / 교정의 느티나무 / 졸업식 / 2분.',tip:'특정 브랜드를 직접 모방하기보다 원하는 정서·악기·템포·구조를 구체적으로 설명합니다.'}
+    ]},
+    {id:5,title:'동화구연 PPT 만들기',intro:'기획 → 스토리보드 → 상세 대본 → 이미지 프롬프트 → 이미지 생성 → PPT 제작의 6단계입니다.',items:[
+      {title:'1단계 — 동화 기획서 만들기',icon:'📖',prompt:`너는 유아문학과 동화구연을 전문으로 하는 15년차 유치원 교사야.
+
+[교사 입력]
+- 대상 연령: 만 [ ]세
+- 주제: [ ]
+- 핵심 교훈: [ ]
+- 주인공: [ ]
+- 배경: [ ]
+- 구연 시간: 약 [ ]분
+- 동화 뒤 적용할 놀이·활동: [ ]
+- 우리 반 관찰 맥락: [실명 없이 입력]
+
+[요청]
+유아가 자신의 경험과 연결해 들을 수 있는 창작동화 제작 기획서를 작성해줘.
+
+[출력]
+1. 제목 후보 5개
+2. 한 문장 로그라인
+3. 기획 의도와 교육적 의미
+4. 등장인물과 관계
+5. 시작–문제–시도–전환–해결–마무리의 이야기 구조
+6. 유아 참여 포인트 3개(따라 말하기·동작·예측 질문)
+7. 누리과정과 연결 가능한 영역—관련성이 높은 것만 제안
+8. 정서·안전·편견 검토
+9. 동화 후 연계 활동 3개
+
+만 [ ]세에게 어렵거나 무서운 표현은 제외하고, 제공되지 않은 학급 정보는 만들지 마.`,guide:'대상 연령, 주제, 핵심 교훈, 주인공, 배경, 구연 시간, 연계 활동, 우리 반의 관찰 맥락을 적으세요. 실명과 민감한 개인 정보는 제외하세요.'},
+      {title:'2단계 — 10~12장면 상세 스토리보드',icon:'🧩',prompt:`첨부하거나 위에서 확정한 동화 기획서를 바탕으로 [10~12]장면의 동화구연 PPT 스토리보드를 만들어줘.
+
+각 장면마다 다음 항목을 작성해줘.
+1. 페이지 번호
+2. 장면의 목적
+3. 배경·시간·등장인물·행동
+4. 화면 구도(와이드/중경/클로즈업)와 시선 흐름
+5. 교사가 읽을 내레이션과 인물 대사
+6. 유아 참여 질문 또는 따라 할 동작
+7. 다음 장면으로 넘어가는 연결 문장
+8. 권장 구연 시간
+
+[조건]
+- 같은 사건을 반복하지 말고 장면마다 변화가 있을 것
+- 전체 구연 시간 [ ]분에 맞게 문장 길이를 조절
+- 한 슬라이드의 화면 문구는 최대 2문장으로 제한
+- 대사는 만 [ ]세가 이해할 수 있는 짧은 문장
+- 문제 해결은 우연이나 어른의 일방적 개입보다 주인공의 시도·도움 요청·협력으로 전개
+- 위험 행동을 따라 하게 만들거나 특정 특성을 놀리는 표현 제외
+
+마지막에 전체 흐름에서 빠진 장면, 감정 변화가 갑작스러운 장면, 반복되는 장면을 점검해줘.`,guide:'1단계에서 확정한 동화 기획서를 입력·첨부하고, 장면 수·전체 구연 시간·대상 연령을 실제 값으로 바꾸세요.'},
+      {title:'3단계 — 페이지별 상세 대본',icon:'📝',prompt:`확정한 스토리보드를 기준으로 각 페이지의 상세 제작 명세서를 작성해줘.
+
+페이지별 출력 순서:
+① 페이지 번호·소제목
+② 배경과 소품
+③ 등장인물 위치·표정·동작·인물 관계
+④ 교사가 읽을 내레이션
+⑤ 인물별 대사
+⑥ 화면에 직접 표시할 짧은 문구(필요할 때만)
+⑦ 목소리·속도·표정 등 구연 지시
+⑧ 유아 참여 질문·동작
+⑨ 다음 페이지 전환 지시
+
+[일관성]
+- 캐릭터별 털색/피부색, 헤어, 의상, 소품, 키 차이를 고정
+- 등장하지 않는 인물이나 물건을 임의로 추가하지 않기
+- 내레이션과 대사에서 같은 정보를 반복하지 않기
+- 읽기 어려운 긴 문장은 둘로 나누기
+- 대사와 내레이션은 이미지 속 글자가 아니라 PPT의 편집 가능한 텍스트 또는 발표자 노트로 사용할 수 있게 분리`,guide:'2단계에서 확정한 스토리보드와 캐릭터 설정을 입력·첨부하세요. 수정할 캐릭터 외형·의상·소품이 있다면 이 단계에서 최종 확정하세요.'},
+      {title:'4단계 — 공통 디자인 + 페이지별 이미지 프롬프트',icon:'🎨',prompt:`확정한 기획서, 캐릭터 설정, 스토리보드, 페이지 상세 명세를 바탕으로 동화구연 PPT용 이미지 프롬프트를 만들어줘.
+
+[A. 전체 공통 디자인 프롬프트]
+- 16:9 가로형, 유아용 고급 동화책 일러스트
+- [수채화 / 종이 콜라주 / 부드러운 3D 애니메이션 중 선택]
+- 따뜻한 아이보리 배경, [주조색]과 [보조색]의 일관된 팔레트
+- 부드러운 자연광, 편안하고 안전한 분위기
+- 캐릭터 바이블의 외형·의상·색상·신체 비율을 모든 페이지에서 동일하게 유지
+- 화면 가장자리 10% 안전 여백
+- 글자, 대사, 말풍선, 로고, 워터마크, 페이지 번호는 이미지에 넣지 않기
+
+[B. 페이지별 프롬프트]
+각 페이지마다 ① 핵심 장면 ② 인물·표정·동작 ③ 배경·소품 ④ 구도·카메라 ⑤ 조명·색감 ⑥ 반드시 유지할 캐릭터 고정 특징 ⑦ 제외할 요소를 작성해줘.
+
+[C. 통합 프롬프트]
+각 페이지에 대해 ‘전체 공통 디자인 프롬프트 + 해당 페이지 프롬프트’를 합친 완성형 한국어 프롬프트와 영어 프롬프트를 각각 제공해줘.
+
+[D. 공통 네거티브 프롬프트]
+캐릭터 외형 변화, 의상 변화, 인물 복제, 손발 왜곡, 눈·얼굴 비대칭, 불필요한 소품, 공포 분위기, 위험 행동, 흐릿한 화면, 글자·말풍선·로고·워터마크를 제외하도록 작성해줘.
+
+출력 전 모든 페이지에서 캐릭터와 배경 연속성이 유지되는지 점검해줘.`,guide:'기획서, 캐릭터 설정, 스토리보드, 페이지별 상세 내용을 입력·첨부하세요. 그림 스타일 1개와 주조색·보조색을 선택하세요. 예: 수채화 / 짙은 초록 / 따뜻한 노랑.',tip:'대사는 이미지에 직접 넣지 않고 PPT에서 편집 가능한 글자로 배치해야 오탈자 수정이 쉽습니다.'},
+      {title:'5단계 — 이미지 순차 생성',icon:'🖼️',prompt:`첨부한 ① 동화 기획서 ② 캐릭터 바이블 ③ 스토리보드 ④ 페이지별 상세 대본 ⑤ 통합 이미지 프롬프트를 기준으로 이미지를 생성해줘.
+
+[생성 규칙]
+- 먼저 전체 페이지 목록과 고정 캐릭터 특징을 요약해 내가 확인하도록 해줘.
+- 확인 후 1페이지부터 한 장씩 순서대로 생성해줘.
+- 모든 이미지는 16:9 가로형.
+- 앞 페이지에서 확정한 캐릭터 얼굴·털색/피부색·의상·소품·비율을 그대로 유지.
+- 이미지 안에는 글자, 대사, 말풍선, 로고, 워터마크, 페이지 번호를 넣지 마.
+- 한 장을 만든 뒤 다음 장으로 넘어가기 전에 장면 번호와 적용한 고정 특징을 짧게 알려줘.
+- 내가 “다음”이라고 하면 다음 페이지를 생성해줘.
+- 수정 요청 시 다른 요소는 유지하고 요청한 부분만 바꿔줘.`,guide:'기획서, 캐릭터 바이블, 스토리보드, 페이지별 대본, 통합 이미지 프롬프트를 첨부하세요. 파일명 앞에 01, 02처럼 순서를 표시하면 장면 관리가 쉽습니다.',tip:'순차 생성은 중간에 캐릭터 외형과 배경 연속성을 확인할 수 있어 재작업을 줄여줍니다.'},
+      {title:'6단계 — 이미지 순서대로 동화구연 PPT 만들기',icon:'📽️',prompt:`첨부한 완성 이미지와 페이지별 상세 대본을 이용해 동화구연용 PowerPoint 파일을 만들어줘.
+
+[슬라이드 구성]
+- 화면비율: 16:9 와이드
+- 이미지 파일의 번호 순서대로 슬라이드 1장에 이미지 1장씩 꽉 차게 배치
+- 이미지 비율을 유지하고 찌그러뜨리지 않기. 필요하면 최소 범위에서 자르기
+- 화면 문구가 필요한 슬라이드만 반투명 아이보리 텍스트 상자를 사용
+- 글꼴: 가독성 높은 한글 고딕체, 본문 최소 24pt 권장
+- 대사는 인물 가까이에 짧게, 내레이션은 하단에 배치
+- 전체 대본과 구연 지시는 슬라이드 발표자 노트에 입력
+- 전환 효과는 부드러운 페이드 중심, 자동재생은 사용하지 않기
+- 기관 로고는 제공된 파일이 있을 때만 사용
+
+[접근성·검토]
+- 각 이미지에 장면을 설명하는 대체 텍스트 입력
+- 글자와 배경의 대비 확보
+- 한 슬라이드에 너무 많은 문장 금지
+- 유아 개인정보·실제 얼굴 이미지가 없는지 확인
+
+[산출물]
+1. 편집 가능한 .pptx 파일
+2. 슬라이드 순서와 제목 목록
+3. 누락 이미지·대본·폰트가 있으면 임의로 만들지 말고 알려주기
+
+완성 후 슬라이드마다 이미지 잘림, 글자 겹침, 순서, 맞춤법을 점검하고 다운로드할 수 있게 제공해줘.`,guide:'번호를 붙인 완성 이미지 전체와 페이지별 상세 대본을 첨부하세요. 표지 제목, 화면 문구, 발표자 노트 내용, 로고·폰트 유무를 알려주세요.'}
+    ]}
+  ];
+  const sampleExamples = {
+    '0-0': `대상 연령: 만 5세\n인원: 18명\n유아의 실제 관심: 텃밭에서 달팽이를 발견하고 움직임을 오래 관찰함\n동화 소재: 비 온 뒤 텃밭을 여행하는 작은 달팽이\n원하는 분량: 약 6분`,
+    '1-0': `주제: 남성유치원 가을 현장체험학습\n대상: 만 4~5세 전체 원아\n일시: 2026-10-16(금) 09:30~14:00\n장소: 충주 탄금공원\n준비물: 물통, 간식, 개인 손수건\n복장: 활동하기 편한 옷과 운동화\n비용: 없음\n이동 방법: 유치원 버스\n우천 시 계획: 원내 대체 체험활동 진행\n회신 마감: 2026-10-12(월)\n문의: 담임교사`,
+    '1-1': `연령·인원: 만 4세 20명\n시기·환경: 9월 초, 교실과 바깥놀이터 사용 가능\n관찰 기록: 아이들이 바람에 떨어지는 나뭇잎을 쫓아가며 색과 모양을 비교함\n개별 지원 필요: 말로 표현하기 어려운 유아 1명, 큰 소리에 민감한 유아 1명\n사용 가능한 자료: 확대경, 투명 바구니, 색종이, 크레파스, 집게`,
+    '1-2': `반 연령: 만 5세\n운영 기간: 2026-09-14(월)~2026-09-18(금)\n최근 관심: 가을 하늘과 구름 모양\n학급 인원과 특성: 19명, 하늘을 보며 동물 모양을 찾아 이야기하는 것을 좋아함\n실제 일과: 등원-자유놀이-모임-바깥놀이-점심-휴식-오후놀이-귀가\n행사·특이사항: 수요일 소방대피훈련 예정`,
+    '1-3': `연계 놀이명: 가을 나뭇잎 탐색\n대상 연령: 만 4세\n활동지 목적: 나뭇잎의 모양과 색을 비교하고 관찰 경험을 회상하기\n인쇄 조건: A4 세로, 흑백`,
+    '2-0': `대상 연령: 만 3~5세 유아와 학부모\n카드뉴스 주제: 감기 예방을 위한 손 씻기\n사용할 곳: 교실 TV, 가정통신문 링크, 유치원 SNS\n카드 수와 비율: 1:1 정사각형 4장\n카드별 핵심 문구: ① 뽀득뽀득 깨끗한 손 ② 언제 씻을까요? ③ 비누로 꼼꼼하게 ④ 우리 함께 실천해요`,
+    '2-1': `배포 대상: 남성유치원 학부모\n배포 시기: 여름방학 전\n물놀이 장소·운영 방식: 가정에서 수영장·계곡 이용 시 참고용\n강조할 준비물: 구명조끼, 모자, 물, 수건\n강조할 안전수칙: 보호자가 가까이에서 계속 관찰하기, 정해진 구역 이용하기`,
+    '2-2': `행사명: 남성유치원 가을 숲 나들이\n날짜: 2026년 10월 16일(금)\n시간: 오전 9시 30분~오후 2시\n장소: 충주 탄금공원\n대상: 만 4~5세 원아\n준비물: 물통, 간식, 손수건\n복장: 편한 옷과 운동화\n우천 시 안내: 원내 대체활동으로 변경`,
+    '2-3': `행사 제목: 남성유치원 신나는 어린이날 축제\n날짜·시간: 2027년 5월 4일(화) 10:00~12:00\n장소: 남성유치원 강당과 운동장\n대상: 전 원아\n핵심 프로그램: 비눗방울 놀이, 풍선놀이, 작은 선물 나눔\n준비물: 편한 복장, 개인 물통`,
+    '3-0': `동화 제목: 아기 토끼의 노란 우산\n주제: 비 오는 날 안전하게 도움 요청하기\n대상 연령: 만 4~5세\n영상 길이: 약 30초\n핵심 사건: 아기 토끼가 엄마를 잠시 놓쳤지만 제자리에서 선생님 토끼에게 도움을 요청함\n교훈: 길을 잃었을 때 혼자 돌아다니지 않고 믿을 수 있는 어른에게 도움 요청하기\n등장인물: 아기 토끼, 엄마 토끼, 선생님 토끼\n분위기: 따뜻하고 밝은 3D 애니메이션`,
+    '3-1': `별도 입력 없음.\n각 장면 프롬프트 끝에 그대로 붙여 넣어 사용하세요.\n예: “장면 1 이미지 프롬프트 + [공통 조건 전체]”`,
+    '4-0': `사용 장면: 아침 등원과 체육대회\n노래 길이: 약 1분 40초\n핵심 이미지: 친구와 인사하기, 함께 뛰기, 서로 도와주기, 웃으며 성장하기\n분위기: 밝고 신나는 느낌\n빠르기: 약 110 BPM\n유치원명: 남성유치원`,
+    '4-1': `핵심 가치 3가지: 사랑, 우정, 성장\n상징 공간·자연물: 운동장 옆 큰 나무, 아침 햇살, 봄꽃길\n사용 장면: 졸업식\n노래 길이: 약 2분\n유치원명: 남성유치원`,
+    '5-0': `대상 연령: 만 5세\n주제: 가족의 소중함\n핵심 교훈: 사랑하는 가족과 함께하는 시간의 소중함\n주인공: 엄마를 찾는 유치원 아이\n배경: 남성유치원과 동네 공원\n구연 시간: 약 6분\n동화 뒤 적용할 놀이·활동: 우리 가족에게 감사 카드 만들기\n우리 반 관찰 맥락: 아이들이 주말 가족 나들이 경험을 자주 이야기함`,
+    '5-1': `장면 수: 10장면\n전체 구연 시간: 약 6분\n대상 연령: 만 5세\n기획서 입력: 1단계에서 확정한 “엄마를 찾아가는 아이의 이야기” 기획서 전체를 붙여넣기`,
+    '5-2': `스토리보드: 2단계에서 확정한 10장면 스토리보드 전체\n캐릭터 설정: 주인공 5세 남아, 노란색 티셔츠, 파란색 바지, 빨간 운동화 / 엄마는 베이지색 가디건과 청바지\n추가 수정: 주인공의 의상과 색상은 모든 장면에서 동일하게 유지`,
+    '5-3': `그림 스타일: 부드러운 3D 애니메이션\n주조색: 딥 그린\n보조색: 따뜻한 노랑\n첨부·입력 자료: 동화 기획서 + 캐릭터 설정 + 스토리보드 + 페이지별 상세 대본`,
+    '5-4': `첨부 파일 예시:\n01_표지.png\n02_유치원에서_엄마를_기다리는장면.png\n03_선생님께_도움요청.png\n...\n10_엄마와_다시만남.png\n\n함께 첨부할 자료: 캐릭터 바이블, 스토리보드, 페이지별 상세 대본, 통합 이미지 프롬프트`,
+    '5-5': `첨부 이미지: 01~10번 완성 이미지\n표지 제목: 엄마를 찾아서\n화면 문구: 장면별 최대 1~2문장\n발표자 노트: 페이지별 상세 대본 전체\n로고: 사용하지 않음\n폰트: 가독성 높은 한글 고딕체` 
+  };
+
+  const checks=['유아·보호자의 실명, 얼굴, 연락처, 건강·상담 기록을 입력하거나 노출하지 않았는가?','날짜와 요일, 장소, 비용, 준비물, 문의처가 실제 정보와 일치하는가?','안전·보건·법규·저작권 관련 내용은 최신 공식 자료와 기관 지침으로 확인했는가?','누리과정 영역·내용을 실제 놀이 관찰과 자연스럽게 연결했는가?','유아의 발달 수준에 맞고 어렵거나 무서운 표현이 없는가?','성별, 가족 형태, 장애, 문화 등에 대한 고정관념이나 낙인 표현이 없는가?','AI 이미지 속 한국어 글자와 숫자에 오탈자가 없는가?','캐릭터 외형·의상·배경이 페이지와 장면 사이에서 일관적인가?','음악·이미지·영상 도구의 최신 이용약관과 사용 범위를 확인했는가?','교사가 직접 읽고 보고 들어본 뒤 학급과 기관 상황에 맞게 최종 수정했는가?'];
+  const escapeHtml=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const root=document.querySelector('#prompt-root');
+  chapters.forEach(ch=>{const section=document.createElement('section');section.className='chapter';section.id='chapter-'+ch.id;section.innerHTML=`<div class="chapter-head"><div class="chapter-no">${ch.id}</div><div><h2>${escapeHtml(ch.title)}</h2><p class="chapter-intro">${escapeHtml(ch.intro)}</p></div></div>`;ch.items.forEach((it,idx)=>{const card=document.createElement('article');card.className='prompt-card';const pid=`prompt-${ch.id}-${idx}`;card.innerHTML=`<div class="card-top"><div class="card-icon">${it.icon}</div><div class="card-title"><span>복사해서 실습하기</span><h3>${escapeHtml(it.title)}</h3></div><button class="copy" type="button" data-target="${pid}">한번에 복사</button></div>${it.basic?`<div class="basic"><b>비교용 기본 프롬프트</b><button class="copy" type="button" data-basic="${escapeHtml(it.basic)}">복사</button><p>${escapeHtml(it.basic)}</p></div>`:''}<pre class="prompt" id="${pid}">${escapeHtml(it.prompt)}</pre><div class="teacher-guide"><strong>✏️ 선생님 입력 가이드</strong><p>${escapeHtml(it.guide)}</p>${sampleExamples[`${ch.id}-${idx}`]?`<div class="sample-example"><strong>💡 입력 예시</strong><pre>${escapeHtml(sampleExamples[`${ch.id}-${idx}`])}</pre></div>`:''}</div>${it.tip?`<p class="tip"><b>현장 팁</b> · ${escapeHtml(it.tip)}</p>`:''}`;section.appendChild(card)});root.appendChild(section)});
+  document.querySelector('#checks').innerHTML=checks.map(x=>`<div class="check"><span>✓</span><div>${escapeHtml(x)}</div></div>`).join('');
+  async function copyText(text,btn){try{await navigator.clipboard.writeText(text)}catch(e){const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();document.execCommand('copy');ta.remove()}const old=btn.textContent;btn.textContent='복사 완료 ✓';btn.classList.add('done');setTimeout(()=>{btn.textContent=old;btn.classList.remove('done')},1600)}
+  document.addEventListener('click',e=>{const btn=e.target.closest('.copy');if(!btn)return;const text=btn.dataset.basic||document.getElementById(btn.dataset.target)?.textContent||'';copyText(text,btn)});
+  const topBtn=document.querySelector('.top');addEventListener('scroll',()=>topBtn.classList.toggle('show',scrollY>650),{passive:true});topBtn.addEventListener('click',()=>scrollTo({top:0,behavior:'smooth'}));
+  const navLinks=[...document.querySelectorAll('.toc a')];const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){navLinks.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id))}})},{rootMargin:'-15% 0px -72% 0px'});document.querySelectorAll('.chapter').forEach(s=>obs.observe(s));
+  </script>
+</body>
+</html>
